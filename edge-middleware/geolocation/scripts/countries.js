@@ -1,5 +1,9 @@
-const { join } = require('path')
-const { writeFile } = require('fs/promises')
+const {
+  join
+} = require('path')
+const {
+  writeFile
+} = require('fs/promises')
 
 const JSON_URL =
   'https://raw.githubusercontent.com/mledoze/countries/master/dist/countries.json'
@@ -22,7 +26,9 @@ async function setupCountryInfo() {
 }
 
 function withCountryInfo(nextConfig = {}) {
-  const { rewrites } = nextConfig
+  const {
+    rewrites
+  } = nextConfig
   // Not really adding rewrites but using its async behavior to load the country data
   nextConfig.rewrites = async (...args) => {
     await setupCountryInfo()
@@ -32,4 +38,7 @@ function withCountryInfo(nextConfig = {}) {
   return nextConfig
 }
 
-module.exports = { withCountryInfo, setupCountryInfo }
+module.exports = {
+  withCountryInfo,
+  setupCountryInfo
+}

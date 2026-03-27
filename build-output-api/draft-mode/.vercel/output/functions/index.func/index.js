@@ -7,12 +7,12 @@ module.exports = (req, res) => {
   const isDraftMode =
     typeof req.headers.cookie === 'string' &&
     req.headers.cookie.includes(`__prerender_bypass=${bypassToken}`)
-  const contents = isDraftMode
-    ? 'Draft Mode is <strong>ENABLED</strong>. Notice how the "Server time" below gets updated every time you refresh!'
-    : 'Draft Mode is <strong>DISABLED</strong>. The "server time" below will only get updated once per minute.'
-  const enable = isDraftMode
-    ? '<a href="/logout">Deactivate Draft Mode</a>'
-    : '<a href="/login">Enable Draft Mode</a>'
+  const contents = isDraftMode ?
+    'Draft Mode is <strong>ENABLED</strong>. Notice how the "Server time" below gets updated every time you refresh!' :
+    'Draft Mode is <strong>DISABLED</strong>. The "server time" below will only get updated once per minute.'
+  const enable = isDraftMode ?
+    '<a href="/logout">Deactivate Draft Mode</a>' :
+    '<a href="/login">Enable Draft Mode</a>'
   res.end(`
 <h1>Draft Mode Example</h1>
 <p>${contents}</p>

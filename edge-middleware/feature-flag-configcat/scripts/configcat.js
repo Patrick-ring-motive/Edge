@@ -1,5 +1,9 @@
-const { join } = require('path')
-const { writeFile } = require('fs/promises')
+const {
+  join
+} = require('path')
+const {
+  writeFile
+} = require('fs/promises')
 const prettier = require('prettier')
 const configcat = require('configcat-node')
 const {
@@ -20,15 +24,18 @@ async function setupConfigcat() {
   const logger = configcat.createConsoleLogger(3)
   // We only need to setup the client once so polling is not required
   const configCatClient = configcat.createClientWithManualPoll(
-    process.env.NEXT_PUBLIC_CONFIGCAT_SDK_KEY,
-    { logger: logger }
+    process.env.NEXT_PUBLIC_CONFIGCAT_SDK_KEY, {
+      logger: logger
+    }
   )
 
   // This action takes more then 350ms, trying to fetch Configcat' config
   // at runtime would be too expensive
   await configCatClient.forceRefreshAsync()
 
-  const { ConfigJSON } = await configCatClient.configService.getConfig()
+  const {
+    ConfigJSON
+  } = await configCatClient.configService.getConfig()
   const flags = ConfigJSON[ConfigFile.FeatureFlags]
   const data = Object.entries({
     // Maps for the config
@@ -41,17 +48,23 @@ async function setupConfigcat() {
     ConfigJSON,
   }).reduce((obj, [k, v]) => {
     // Move static methods in classes to an object
-    obj[k] = { ...v }
+    obj[k] = {
+      ...v
+    }
     return obj
   }, {})
   const filePath = join(process.cwd(), 'lib/config.json')
-  const content = prettier.format(JSON.stringify(data), { parser: 'json' })
+  const content = prettier.format(JSON.stringify(data), {
+    parser: 'json'
+  })
 
   await writeFile(filePath, content)
 }
 
 function withConfigcat(nextConfig = {}) {
-  const { rewrites } = nextConfig
+  const {
+    rewrites
+  } = nextConfig
   // Not really adding rewrites but using its async behavior to load the config from configcat
   nextConfig.rewrites = async (...args) => {
     await setupConfigcat()
@@ -61,4 +74,7 @@ function withConfigcat(nextConfig = {}) {
   return nextConfig
 }
 
-module.exports = { withConfigcat, setupConfigcat }
+module.exports = {
+  withConfigcat,
+  setupConfigcat
+}

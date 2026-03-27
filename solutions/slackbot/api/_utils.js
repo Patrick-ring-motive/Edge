@@ -1,5 +1,7 @@
 import fetch from 'node-fetch'
-import { token } from './_constants'
+import {
+  token
+} from './_constants'
 
 export function tokenizeString(string) {
   const array = string.split(' ').filter((element) => {
@@ -33,7 +35,9 @@ export async function postToChannel(channel, res, payload) {
     const data = await response.json()
 
     console.log('data from fetch:', data)
-    res.json({ ok: true })
+    res.json({
+      ok: true
+    })
   } catch (err) {
     console.log('fetch Error:', err)
     res.send({

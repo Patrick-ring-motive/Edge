@@ -1,4 +1,6 @@
-import { Component } from 'react'
+import {
+  Component
+} from 'react'
 import Head from 'next/head'
 
 export default class CloudinaryUploadWidget extends Component {
@@ -8,9 +10,10 @@ export default class CloudinaryUploadWidget extends Component {
   }
 
   showWidget = () => {
-    const { callback } = this.props
-    let widget = window.cloudinary.createUploadWidget(
-      {
+    const {
+      callback
+    } = this.props
+    let widget = window.cloudinary.createUploadWidget({
         cloudName: 'vercel-platforms',
         uploadPreset: 'w0vnflc6',
         cropping: true,
@@ -30,19 +33,24 @@ export default class CloudinaryUploadWidget extends Component {
   }
 
   render() {
-    return (
-      <>
-        <Head>
-          // this is Next.js specific, but if you're using something like Create
-          React App, // you could download the script in componentDidMount using
-          this method: https://stackoverflow.com/a/34425083/1424568
-          <script
-            src="https://widget.cloudinary.com/v2.0/global/all.js"
-            type="text/javascript"
-          />
-        </Head>
-        {this.props.children({ open: this.open })}
-      </>
+    return ( <
+      >
+      <
+      Head >
+      // this is Next.js specific, but if you're using something like Create
+      React App, // you could download the script in componentDidMount using
+      this method: https: //stackoverflow.com/a/34425083/1424568
+      <
+      script src = "https://widget.cloudinary.com/v2.0/global/all.js"
+      type = "text/javascript" /
+      >
+      <
+      /Head> {
+        this.props.children({
+          open: this.open
+        })
+      } <
+      />
     )
   }
 }

@@ -1,17 +1,29 @@
-const { parse } = require('querystring')
+const {
+  parse
+} = require('querystring')
 
 // Here is our imaginary CMS "data source". In this case it's just inlined in the
 // Serverless Function code, but in a real-world scenario this function would
 // probably invoke a request to a database or real CMS to retrieve this information.
-const posts = [
-  { slug: 'three', contents: 'Three ⚽⚽⚽️' },
-  { slug: 'four', contents: 'Four ⚾⚾⚾⚾️' },
-  { slug: 'five', contents: 'Five 🏀🏀🏀🏀🏀' },
+const posts = [{
+    slug: 'three',
+    contents: 'Three ⚽⚽⚽️'
+  },
+  {
+    slug: 'four',
+    contents: 'Four ⚾⚾⚾⚾️'
+  },
+  {
+    slug: 'five',
+    contents: 'Five 🏀🏀🏀🏀🏀'
+  },
 ]
 
 module.exports = (req, res) => {
   const matches = parse(req.headers['x-now-route-matches'])
-  const { slug } = matches
+  const {
+    slug
+  } = matches
   const post = posts.find((post) => post.slug === slug)
 
   const body = []

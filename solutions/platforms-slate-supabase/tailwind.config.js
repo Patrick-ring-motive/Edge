@@ -41,8 +41,12 @@ module.exports = {
             h3: {
               fontFamily: 'Cal Sans',
             },
-            'blockquote p:first-of-type::before': { content: 'none' },
-            'blockquote p:first-of-type::after': { content: 'none' },
+            'blockquote p:first-of-type::before': {
+              content: 'none'
+            },
+            'blockquote p:first-of-type::after': {
+              content: 'none'
+            },
           },
         },
       },
@@ -52,11 +56,21 @@ module.exports = {
             transform: 'translateX(0%)',
             transformOrigin: '50% 50%',
           },
-          '15%': { transform: 'translateX(-6px) rotate(-6deg)' },
-          '30%': { transform: 'translateX(9px) rotate(6deg)' },
-          '45%': { transform: 'translateX(-9px) rotate(-3.6deg)' },
-          '60%': { transform: 'translateX(3px) rotate(2.4deg)' },
-          '75%': { transform: 'translateX(-2px) rotate(-1.2deg)' },
+          '15%': {
+            transform: 'translateX(-6px) rotate(-6deg)'
+          },
+          '30%': {
+            transform: 'translateX(9px) rotate(6deg)'
+          },
+          '45%': {
+            transform: 'translateX(-9px) rotate(-3.6deg)'
+          },
+          '60%': {
+            transform: 'translateX(3px) rotate(2.4deg)'
+          },
+          '75%': {
+            transform: 'translateX(-2px) rotate(-1.2deg)'
+          },
         },
       },
       animation: {

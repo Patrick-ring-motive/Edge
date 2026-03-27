@@ -1,9 +1,13 @@
-const { parse } = require('querystring')
+const {
+  parse
+} = require('querystring')
 
 module.exports = (req, res) => {
   const matches = parse(req.headers['x-now-route-matches'])
-  let { slug } = matches
-  
+  let {
+    slug
+  } = matches
+
   // if slug isn't present in x-now-route-matches it 
   // matched at the filesystem level and can be parsed
   // from the URL
@@ -11,7 +15,7 @@ module.exports = (req, res) => {
     const matches = req.url.match(/\/blog\/([^/]+)(?:\/)?/)
     slug = matches[1]
   }
-  
+
   res.setHeader('Content-Type', 'text/html; charset=utf-8')
   res.end(`
 <!DOCTYPE html>

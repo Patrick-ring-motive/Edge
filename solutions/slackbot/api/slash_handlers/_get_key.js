@@ -1,5 +1,7 @@
 import fetch from 'node-fetch'
-import { redis } from '../_constants'
+import {
+  redis
+} from '../_constants'
 
 export async function getKey(res, commandArray) {
   let key = commandArray[1]

@@ -12,8 +12,12 @@ const client = new DynamoDBClient({});
 export default async function handler(req, res) {
   if (req.method === 'PUT') {
     const Item = {
-      id: { S: uuid.v4() },
-      content: { S: req.body.content }
+      id: {
+        S: uuid.v4()
+      },
+      content: {
+        S: req.body.content
+      }
     };
     await client.send(
       new PutItemCommand({
@@ -26,11 +30,15 @@ export default async function handler(req, res) {
   }
 
   if (req.method === 'GET') {
-    const { Item } = await client.send(
+    const {
+      Item
+    } = await client.send(
       new GetItemCommand({
         TableName: process.env.TABLE_NAME,
         Key: {
-          id: { S: req.query.id }
+          id: {
+            S: req.query.id
+          }
         }
       })
     );
@@ -39,15 +47,21 @@ export default async function handler(req, res) {
   }
 
   if (req.method === 'POST') {
-    const { Attributes } = await client.send(
+    const {
+      Attributes
+    } = await client.send(
       new UpdateItemCommand({
         TableName: process.env.TABLE_NAME,
         Key: {
-          id: { S: req.body.id }
+          id: {
+            S: req.body.id
+          }
         },
         UpdateExpression: 'set content = :c',
         ExpressionAttributeValues: {
-          ':c': { S: req.body.content }
+          ':c': {
+            S: req.body.content
+          }
         },
         ReturnValues: 'ALL_NEW'
       })
@@ -61,7 +75,9 @@ export default async function handler(req, res) {
       new DeleteItemCommand({
         TableName: process.env.TABLE_NAME,
         Key: {
-          id: { S: req.body.id }
+          id: {
+            S: req.body.id
+          }
         }
       })
     );

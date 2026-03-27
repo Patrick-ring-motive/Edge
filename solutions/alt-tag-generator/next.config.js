@@ -3,8 +3,7 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   async redirects() {
-    return [
-      {
+    return [{
         source: "/github",
         destination: "https://github.com/vercel/examples/tree/main/solutions/alt-tag-generator",
         permanent: false,
@@ -13,7 +12,7 @@ const nextConfig = {
         source: "/deploy",
         destination: "https://vercel.com/templates/next.js/ai-alt-text-generator",
         permanent: false,
-      },   
+      },
     ]
   },
 }

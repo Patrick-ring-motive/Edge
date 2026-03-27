@@ -1,12 +1,18 @@
 import styles from './loading-dots.module.css'
 
 const LoadingDots = () => {
-  return (
-    <span className={styles.loading}>
-      <span />
-      <span />
-      <span />
-    </span>
+  return ( <
+    span className = {
+      styles.loading
+    } >
+    <
+    span / >
+    <
+    span / >
+    <
+    span / >
+    <
+    /span>
   )
 }
 

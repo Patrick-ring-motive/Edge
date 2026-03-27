@@ -8,7 +8,9 @@ export default async function SaveSiteSettings(req, res) {
       email: data.email,
       image: data.image,
     })
-    .match({ id: data.id })
+    .match({
+      id: data.id
+    })
 
   res.status(200).json(response)
 }

@@ -1,4 +1,6 @@
-const { DOCS_URL } = process.env
+const {
+  DOCS_URL
+} = process.env
 
 module.exports = {
   async rewrites() {

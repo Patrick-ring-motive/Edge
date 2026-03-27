@@ -1,5 +1,9 @@
-const { join } = require('path')
-const { writeFile } = require('fs/promises')
+const {
+  join
+} = require('path')
+const {
+  writeFile
+} = require('fs/promises')
 const prettier = require('prettier')
 
 async function upstash(args) {
@@ -24,9 +28,9 @@ async function upstash(args) {
     body: JSON.stringify(args),
   })
 
-  const data = res.headers.get('Content-Type').includes('application/json')
-    ? await res.json()
-    : await res.text()
+  const data = res.headers.get('Content-Type').includes('application/json') ?
+    await res.json() :
+    await res.text()
 
   if (!res.ok) {
     throw new Error(
@@ -40,7 +44,9 @@ async function upstash(args) {
 }
 
 async function setupUpstash() {
-  const redirects = Array.from({ length: 10000 }, (x, i) => ({
+  const redirects = Array.from({
+    length: 10000
+  }, (x, i) => ({
     source: `/${i + 1}`,
     destination: `/posts/${i + 1}`,
     permanent: false,
@@ -50,8 +56,15 @@ async function setupUpstash() {
   // is a very good strategy to avoid a trip to redis at the edge
   const hardcodedRedirects = redirects
     .slice(0, 1000)
-    .reduce((obj, { source, destination, permanent }) => {
-      obj[source] = { destination, permanent }
+    .reduce((obj, {
+      source,
+      destination,
+      permanent
+    }) => {
+      obj[source] = {
+        destination,
+        permanent
+      }
       return obj
     }, {})
   const filePath = join(process.cwd(), 'lib/redirects.json')
@@ -71,16 +84,25 @@ async function setupUpstash() {
   try {
     const args = redirects
       .slice(1000)
-      .reduce((carry, { source, destination, permanent }) => {
+      .reduce((carry, {
+        source,
+        destination,
+        permanent
+      }) => {
         // We encode the source because the Edge API sends the key in the URL
         // and it has to be encoded
         carry.push(
           encodeURIComponent(source),
-          JSON.stringify({ destination, permanent })
+          JSON.stringify({
+            destination,
+            permanent
+          })
         )
         return carry
       }, [])
-    const { result } = await upstash([
+    const {
+      result
+    } = await upstash([
       'HGET',
       'redirects',
       encodeURIComponent('/10000'),
@@ -97,7 +119,9 @@ async function setupUpstash() {
 }
 
 function withUpstash(nextConfig = {}) {
-  const { rewrites } = nextConfig
+  const {
+    rewrites
+  } = nextConfig
 
   nextConfig.rewrites = async (...args) => {
     await setupUpstash()
@@ -107,4 +131,7 @@ function withUpstash(nextConfig = {}) {
   return nextConfig
 }
 
-module.exports = { withUpstash, setupUpstash }
+module.exports = {
+  withUpstash,
+  setupUpstash
+}

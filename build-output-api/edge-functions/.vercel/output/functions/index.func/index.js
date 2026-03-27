@@ -1,4 +1,6 @@
-const { Redis } = require("@upstash/redis");
+const {
+  Redis
+} = require("@upstash/redis");
 
 module.exports = async (req, res) => {
   /**

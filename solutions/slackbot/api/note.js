@@ -1,9 +1,21 @@
-import { tokenizeString } from './_utils'
-import { setKey } from './slash_handlers/_set_key'
-import { addToList } from './slash_handlers/_add_to_list'
-import { listAll } from './slash_handlers/_list_all'
-import { getKey } from './slash_handlers/_get_key'
-import { removeFromList } from './slash_handlers/_remove_from_list'
+import {
+  tokenizeString
+} from './_utils'
+import {
+  setKey
+} from './slash_handlers/_set_key'
+import {
+  addToList
+} from './slash_handlers/_add_to_list'
+import {
+  listAll
+} from './slash_handlers/_list_all'
+import {
+  getKey
+} from './slash_handlers/_get_key'
+import {
+  removeFromList
+} from './slash_handlers/_remove_from_list'
 
 export default async function note(req, res) {
   const commandArray = tokenizeString(req.body.text)

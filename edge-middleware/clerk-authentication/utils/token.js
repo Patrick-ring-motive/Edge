@@ -8,5 +8,11 @@ export const parseClaims = (claims) => {
   const expiresAt = claims.exp
   const totalValidForSec = expiresAt - issuedAt
   const timeToLiveInSec = Math.max(expiresAt - now, 0)
-  return { issuedAt, expiresAt, totalValidForSec, timeToLiveInSec, now }
+  return {
+    issuedAt,
+    expiresAt,
+    totalValidForSec,
+    timeToLiveInSec,
+    now
+  }
 }

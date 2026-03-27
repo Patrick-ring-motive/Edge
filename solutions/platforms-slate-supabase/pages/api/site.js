@@ -3,12 +3,19 @@ import supabase from '@/lib/supabase'
 export default async function site(req, res) {
   switch (req.method) {
     case 'GET': {
-      const { userId, siteId } = req.query
+      const {
+        userId,
+        siteId
+      } = req.query
       if (siteId) {
         // get individual site
-        const { siteId } = req.query
+        const {
+          siteId
+        } = req.query
 
-        const { data } = await supabase
+        const {
+          data
+        } = await supabase
           .from('site')
           .select('*')
           .eq('id', siteId)
@@ -16,7 +23,9 @@ export default async function site(req, res) {
         res.status(200).json(data[0])
       } else {
         // get all sites
-        const { data } = await supabase
+        const {
+          data
+        } = await supabase
           .from('site')
           .select('*')
           .eq('userId', userId)
@@ -27,10 +36,17 @@ export default async function site(req, res) {
     }
     case 'POST': {
       // create site
-      const { name, subdomain, description, userId } = req.body
+      const {
+        name,
+        subdomain,
+        description,
+        userId
+      } = req.body
       const sub = subdomain.replace(/[^a-zA-Z0-9/-]+/g, '')
 
-      const { data } = await supabase.from('site').upsert({
+      const {
+        data
+      } = await supabase.from('site').upsert({
         name,
         description,
         subdomain: sub.length > 0 ? sub : cuid(),
@@ -39,15 +55,23 @@ export default async function site(req, res) {
         userId,
       })
 
-      res.status(200).json({ siteId: data[0].id })
+      res.status(200).json({
+        siteId: data[0].id
+      })
       return
     }
     case 'DELETE': {
       // delete site
-      const { siteId } = req.query
+      const {
+        siteId
+      } = req.query
 
-      await supabase.from('post').delete().match({ siteId: siteId })
-      await supabase.from('site').delete().match({ id: siteId })
+      await supabase.from('post').delete().match({
+        siteId: siteId
+      })
+      await supabase.from('site').delete().match({
+        id: siteId
+      })
 
       res.status(200).end()
       return
@@ -68,7 +92,9 @@ export default async function site(req, res) {
       const sub = subdomain.replace(/[^a-zA-Z0-9/-]+/g, '')
       subdomain = sub.length > 0 ? sub : currentSubdomain
 
-      const { data } = await supabase.from('site').upsert({
+      const {
+        data
+      } = await supabase.from('site').upsert({
         name,
         description,
         subdomain,

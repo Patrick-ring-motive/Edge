@@ -1,4 +1,6 @@
-const { withCountryInfo } = require('./scripts/countries')
+const {
+  withCountryInfo
+} = require('./scripts/countries')
 
 module.exports = withCountryInfo({
   images: {

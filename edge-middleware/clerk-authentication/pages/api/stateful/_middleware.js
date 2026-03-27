@@ -1,5 +1,11 @@
-import { requireSession } from '@clerk/nextjs/edge'
-import { withTimer, endTimer, timerResult } from '../../../utils/timer'
+import {
+  requireSession
+} from '@clerk/nextjs/edge'
+import {
+  withTimer,
+  endTimer,
+  timerResult
+} from '../../../utils/timer'
 
 // The handler should return a Response object
 const handler = async (req) => {
@@ -9,7 +15,9 @@ const handler = async (req) => {
   try {
     const reverify = await req.session.verifyWithNetwork()
   } catch (error) {
-    return new Response('Forbidden', { status: 403 })
+    return new Response('Forbidden', {
+      status: 403
+    })
   }
 
   endTimer(req)
@@ -18,8 +26,7 @@ const handler = async (req) => {
     JSON.stringify({
       ...req.session,
       ...timerResult(req),
-    }),
-    {
+    }), {
       status: 200,
       headers: {
         'Content-Type': 'application/json',

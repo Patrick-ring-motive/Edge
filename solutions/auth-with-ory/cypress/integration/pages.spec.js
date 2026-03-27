@@ -21,7 +21,9 @@ context('Basic UI interactions', () => {
   const password = randomPassword()
 
   beforeEach(() => {
-    cy.clearCookies({ domain: null })
+    cy.clearCookies({
+      domain: null
+    })
   })
 
   it('can load the start page', () => {

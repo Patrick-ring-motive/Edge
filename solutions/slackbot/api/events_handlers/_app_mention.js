@@ -1,4 +1,6 @@
-import { postToChannel } from '../_utils'
+import {
+  postToChannel
+} from '../_utils'
 
 export async function app_mention(req, res) {
   let event = req.body.event

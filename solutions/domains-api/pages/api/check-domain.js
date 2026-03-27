@@ -1,10 +1,11 @@
 export default async function handler(req, res) {
-  const { domain } = req.query
+  const {
+    domain
+  } = req.query
 
   const [configResponse, domainResponse] = await Promise.all([
     fetch(
-      `https://api.vercel.com/v6/domains/${domain}/config?teamId=${process.env.TEAM_ID_VERCEL}`,
-      {
+      `https://api.vercel.com/v6/domains/${domain}/config?teamId=${process.env.TEAM_ID_VERCEL}`, {
         method: 'GET',
         headers: {
           Authorization: `Bearer ${process.env.AUTH_BEARER_TOKEN}`,
@@ -13,8 +14,7 @@ export default async function handler(req, res) {
       }
     ),
     fetch(
-      `https://api.vercel.com/v9/projects/${process.env.PROJECT_ID_VERCEL}/domains/${domain}?teamId=${process.env.TEAM_ID_VERCEL}`,
-      {
+      `https://api.vercel.com/v9/projects/${process.env.PROJECT_ID_VERCEL}/domains/${domain}?teamId=${process.env.TEAM_ID_VERCEL}`, {
         method: 'GET',
         headers: {
           Authorization: `Bearer ${process.env.AUTH_BEARER_TOKEN}`,
@@ -36,8 +36,7 @@ export default async function handler(req, res) {
   let verificationResponse = null
   if (!domainJson.verified) {
     const verificationRes = await fetch(
-      `https://api.vercel.com/v9/projects/${process.env.PROJECT_ID_VERCEL}/domains/${domain}/verify?teamId=${process.env.TEAM_ID_VERCEL}`,
-      {
+      `https://api.vercel.com/v9/projects/${process.env.PROJECT_ID_VERCEL}/domains/${domain}/verify?teamId=${process.env.TEAM_ID_VERCEL}`, {
         method: 'POST',
         headers: {
           Authorization: `Bearer ${process.env.AUTH_BEARER_TOKEN}`,
@@ -61,6 +60,8 @@ export default async function handler(req, res) {
   return res.status(200).json({
     configured: !configJson.misconfigured,
     ...domainJson,
-    ...(verificationResponse ? { verificationResponse } : {}),
+    ...(verificationResponse ? {
+      verificationResponse
+    } : {}),
   })
 }

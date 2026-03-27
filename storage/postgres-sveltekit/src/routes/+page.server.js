@@ -1,5 +1,9 @@
-import { createPool } from '@vercel/postgres';
-import { sql } from "@vercel/postgres";
+import {
+  createPool
+} from '@vercel/postgres';
+import {
+  sql
+} from "@vercel/postgres";
 
 async function seed() {
   const createTable = await sql`
@@ -40,24 +44,28 @@ async function seed() {
 }
 
 export async function load() {
-	const db = createPool();
+  const db = createPool();
   const startTime = Date.now();
 
   try {
-		const { rows: users } = await db.query('SELECT * FROM users');
-		const duration = Date.now() - startTime;
-		return {
-			users: users,
-			duration: duration
-		};
-	} catch (error) {
-		if (error?.message === `relation "users" does not exist`) {
+    const {
+      rows: users
+    } = await db.query('SELECT * FROM users');
+    const duration = Date.now() - startTime;
+    return {
+      users: users,
+      duration: duration
+    };
+  } catch (error) {
+    if (error?.message === `relation "users" does not exist`) {
       console.log(
         "Table does not exist, creating and seeding it with dummy data now..."
       );
       // Table is not created yet
       await seed();
-      const { rows: users } = await db.query('SELECT * FROM users');
+      const {
+        rows: users
+      } = await db.query('SELECT * FROM users');
       const duration = Date.now() - startTime;
       return {
         users: users,
@@ -66,5 +74,5 @@ export async function load() {
     } else {
       throw error;
     }
-	}
+  }
 }

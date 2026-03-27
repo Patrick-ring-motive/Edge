@@ -1,16 +1,16 @@
 import path from 'path'
-import { mergeConfig } from 'vite'
+import {
+  mergeConfig
+} from 'vite'
 
 const root = '../../..'
 
 export default {
-  stories: [
-    {
-      directory: path.join(root, 'apps/main-site/components/**'),
-      files: '*.stories.*',
-      titlePrefix: 'Main Site',
-    },
-  ],
+  stories: [{
+    directory: path.join(root, 'apps/main-site/components/**'),
+    files: '*.stories.*',
+    titlePrefix: 'Main Site',
+  }, ],
   addons: [
     // https://storybook.js.org/addons/@storybook/addon-links
     '@storybook/addon-links',
@@ -27,10 +27,14 @@ export default {
     autodocs: true,
   },
   // customize the Vite config here
-  async viteFinal(config, { configType }) {
+  async viteFinal(config, {
+    configType
+  }) {
     // Fix for https://github.com/storybookjs/storybook/issues/18920
     return mergeConfig(config, {
-      define: { 'process.env': {} },
+      define: {
+        'process.env': {}
+      },
     })
   },
 }

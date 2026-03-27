@@ -1,22 +1,22 @@
 import querystring from 'querystring'
-import { getTwitterMedia } from './twitter-media'
-import { truncate } from './util'
+import {
+  getTwitterMedia
+} from './twitter-media'
+import {
+  truncate
+} from './util'
 
 export const getTweets = async (id) => {
   const queryParams = querystring.stringify({
-    expansions:
-      'author_id,attachments.media_keys,referenced_tweets.id,referenced_tweets.id.author_id,attachments.poll_ids',
-    'tweet.fields':
-      'attachments,author_id,public_metrics,created_at,id,in_reply_to_user_id,referenced_tweets,text,entities',
+    expansions: 'author_id,attachments.media_keys,referenced_tweets.id,referenced_tweets.id.author_id,attachments.poll_ids',
+    'tweet.fields': 'attachments,author_id,public_metrics,created_at,id,in_reply_to_user_id,referenced_tweets,text,entities',
     'user.fields': 'id,name,profile_image_url,protected,url,username,verified',
-    'media.fields':
-      'duration_ms,height,media_key,preview_image_url,type,url,width,public_metrics',
+    'media.fields': 'duration_ms,height,media_key,preview_image_url,type,url,width,public_metrics',
     'poll.fields': 'duration_minutes,end_datetime,id,options,voting_status',
   })
 
   const response = await fetch(
-    `https://api.twitter.com/2/tweets/${id}?${queryParams}`,
-    {
+    `https://api.twitter.com/2/tweets/${id}?${queryParams}`, {
       headers: {
         Authorization: `Bearer ${process.env.TWITTER_AUTH_TOKEN}`,
       },
@@ -52,11 +52,10 @@ export const getTweets = async (id) => {
     const mappings = {}
     if (externalURLs) {
       externalURLs.map((url) => {
-        mappings[`${url.url}`] =
-          !url.display_url.startsWith('pic.twitter.com') &&
-          !url.display_url.startsWith('twitter.com')
-            ? url.expanded_url
-            : ''
+        mappings[`${url.url}`] = !url.display_url.startsWith('pic.twitter.com') &&
+          !url.display_url.startsWith('twitter.com') ?
+          url.expanded_url :
+          ''
       })
     }
     var processedText = tweet?.text
@@ -80,15 +79,13 @@ export const getTweets = async (id) => {
   return {
     ...tweet.data,
     media: media || [],
-    video:
-      media && (media[0].type == 'video' || media[0].type == 'animated_gif')
-        ? await getTwitterMedia(id)
-        : null,
+    video: media && (media[0].type == 'video' || media[0].type == 'animated_gif') ?
+      await getTwitterMedia(id) :
+      null,
     polls: tweet?.includes?.polls,
-    url_meta:
-      media || referenced_tweets.length > 0
-        ? null
-        : tweet.data?.entities?.urls[0],
+    url_meta: media || referenced_tweets.length > 0 ?
+      null :
+      tweet.data?.entities?.urls[0],
     referenced_tweets: referenced_tweets,
     author: getAuthorInfo(tweet.data?.author_id),
   }

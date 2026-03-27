@@ -10,7 +10,7 @@ const bypassToken = '87734ad8259d67c3c11747d3e4e112d0'
 const authToken = 'a13f94f6-a441-47ca-95fc-9f44f3450295';
 
 function revalidate(host, path) {
-  return new Promise(function (resolve, reject) {
+  return new Promise(function(resolve, reject) {
     const options = {
       hostname: host,
       port: 443,

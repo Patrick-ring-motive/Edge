@@ -1,4 +1,6 @@
-import { postToChannel } from '../_utils'
+import {
+  postToChannel
+} from '../_utils'
 
 export async function channel_created(req, res) {
   let event = req.body.event

@@ -1,10 +1,14 @@
 import supabase from '@/lib/supabase'
 
 export default async function checkSubdomain(req, res) {
-  const { subdomain } = req.query
+  const {
+    subdomain
+  } = req.query
   const sub = subdomain.replace(/[^a-zA-Z0-9/-]+/g, '')
 
-  const { data } = await supabase
+  const {
+    data
+  } = await supabase
     .from('site')
     .select('subdomain')
     .eq('subdomain', sub)

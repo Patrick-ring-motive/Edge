@@ -1,16 +1,28 @@
 import '@/styles/globals.css'
-import { SessionProvider } from 'next-auth/react'
+import {
+  SessionProvider
+} from 'next-auth/react'
 import PlausibleProvider from 'next-plausible'
 
 export default function App({
   Component,
-  pageProps: { session, ...pageProps },
+  pageProps: {
+    session,
+    ...pageProps
+  },
 }) {
-  return (
-    <PlausibleProvider domain="demo.vercel.im">
-      <SessionProvider session={session}>
-        <Component {...pageProps} />
-      </SessionProvider>
-    </PlausibleProvider>
+  return ( <
+    PlausibleProvider domain = "demo.vercel.im" >
+    <
+    SessionProvider session = {
+      session
+    } >
+    <
+    Component {
+      ...pageProps
+    }
+    /> <
+    /SessionProvider> <
+    /PlausibleProvider>
   )
 }

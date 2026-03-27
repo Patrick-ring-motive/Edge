@@ -1,4 +1,6 @@
-import { next } from '@vercel/edge';
+import {
+  next
+} from '@vercel/edge';
 
 export default function middleware(req) {
   return next({
@@ -7,8 +9,7 @@ export default function middleware(req) {
       'X-Frame-Options': 'DENY',
       'X-Content-Type-Options': 'nosniff',
       'X-DNS-Prefetch-Control': 'on',
-      'Strict-Transport-Security':
-        'max-age=31536000; includeSubDomains; preload',
+      'Strict-Transport-Security': 'max-age=31536000; includeSubDomains; preload',
     },
   });
 }

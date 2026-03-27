@@ -1,9 +1,10 @@
 export default async function handler(req, res) {
-  const { domain } = req.query
+  const {
+    domain
+  } = req.query
 
   const response = await fetch(
-    `https://api.vercel.com/v9/projects/${process.env.PROJECT_ID_VERCEL}/domains?teamId=${process.env.TEAM_ID_VERCEL}`,
-    {
+    `https://api.vercel.com/v9/projects/${process.env.PROJECT_ID_VERCEL}/domains?teamId=${process.env.TEAM_ID_VERCEL}`, {
       body: `{\n  "name": "${domain}"\n}`,
       headers: {
         Authorization: `Bearer ${process.env.AUTH_BEARER_TOKEN}`,

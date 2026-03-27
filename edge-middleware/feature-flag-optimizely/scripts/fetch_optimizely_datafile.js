@@ -9,8 +9,10 @@ async function fetchDatafile() {
 
   const response = await fetch(`https://cdn.optimizely.com/datafiles/${sdkKey}.json`);
   const responseJson = await response.text();
-  if (!fs.existsSync(DATAFILE_DIR)){
-      fs.mkdirSync(DATAFILE_DIR, { recursive: true });
+  if (!fs.existsSync(DATAFILE_DIR)) {
+    fs.mkdirSync(DATAFILE_DIR, {
+      recursive: true
+    });
   }
   fs.writeFileSync(`${DATAFILE_DIR}/datafile.json`, responseJson);
   console.log(`Optimizely Datafile fetched successfully`);
@@ -18,7 +20,7 @@ async function fetchDatafile() {
 
 function withOptimizely(nextConfig = {}) {
   return {
-    ... nextConfig,
+    ...nextConfig,
     // Not actually overwriting rewrites. Just using the async function to fetch optimizely datafile.
     rewrites: async () => {
       await fetchDatafile()

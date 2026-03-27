@@ -1,8 +1,18 @@
-import { challenge } from './events_handlers/_challenge'
-import { app_mention } from './events_handlers/_app_mention'
-import { channel_created } from './events_handlers/_channel_created'
-import { validateSlackRequest } from './_validate'
-import { signingSecret } from './_constants'
+import {
+  challenge
+} from './events_handlers/_challenge'
+import {
+  app_mention
+} from './events_handlers/_app_mention'
+import {
+  channel_created
+} from './events_handlers/_channel_created'
+import {
+  validateSlackRequest
+} from './_validate'
+import {
+  signingSecret
+} from './_constants'
 
 export default async function events(req, res) {
   const type = req.body.type

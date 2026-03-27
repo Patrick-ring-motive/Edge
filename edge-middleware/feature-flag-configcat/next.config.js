@@ -1,3 +1,5 @@
-const { withConfigcat } = require('./scripts/configcat')
+const {
+  withConfigcat
+} = require('./scripts/configcat')
 
 module.exports = withConfigcat()

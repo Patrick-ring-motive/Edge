@@ -1,4 +1,6 @@
-import { redis } from '../_constants'
+import {
+  redis
+} from '../_constants'
 
 export async function setKey(res, commandArray) {
   let key = commandArray[1]

@@ -1,4 +1,6 @@
-import { NextResponse } from "next/server";
+import {
+  NextResponse
+} from "next/server";
 
 export const config = {
   matcher: [
@@ -28,11 +30,11 @@ export default function middleware(req) {
       still need to add "*.platformize.vercel.app" as a wildcard domain on your Vercel dashboard. */
 
   const currentHost =
-    process.env.NODE_ENV === "production" && process.env.VERCEL === "1"
-      ? hostname
-          .replace(`.vercel.pub`, "")
-          .replace(`.platformize.vercel.app`, "")
-      : hostname.replace(`.localhost:3000`, "");
+    process.env.NODE_ENV === "production" && process.env.VERCEL === "1" ?
+    hostname
+    .replace(`.vercel.pub`, "")
+    .replace(`.platformize.vercel.app`, "") :
+    hostname.replace(`.localhost:3000`, "");
 
   if (!url.pathname.includes(".") && !url.pathname.startsWith("/api")) {
     if (currentHost == "app") {

@@ -1,4 +1,6 @@
-import { redis } from '../_constants'
+import {
+  redis
+} from '../_constants'
 
 export async function removeFromList(res, commandArray) {
   let listName = commandArray[1]
