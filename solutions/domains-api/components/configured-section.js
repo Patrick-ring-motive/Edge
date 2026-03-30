@@ -54,8 +54,8 @@ const ConfiguredSection = ({
       /svg> <
       p className = "text-yellow-600 font-medium text-sm" >
       Domain is pending verification <
-      /p> <
-      /div>
+      /p> < /
+      div >
 
       <
       div className = "w-full border-t border-gray-100 mt-5 mb-8" / >
@@ -76,8 +76,8 @@ const ConfiguredSection = ({
               } text-sm border-b-2 pb-1 transition-all ease duration-150`
       } >
       Verify Domain Ownership <
-      /div> <
-      /div> <
+      /div> < /
+      div > <
       div className = "my-3 text-left" >
       <
       p className = "my-5 text-sm" >
@@ -96,8 +96,8 @@ const ConfiguredSection = ({
       p className = "text-sm font-bold" > Type < /p> <
       p className = "text-sm font-mono mt-2" > {
         txtVerification.type
-      } < /p> <
-      /div> <
+      } < /p> < /
+      div > <
       div >
       <
       p className = "text-sm font-bold" > Name < /p> <
@@ -109,8 +109,8 @@ const ConfiguredSection = ({
           1
         )
       } <
-      /p> <
-      /div> <
+      /p> < /
+      div > <
       div >
       <
       p className = "text-sm font-bold" > Value < /p> <
@@ -118,10 +118,10 @@ const ConfiguredSection = ({
       <
       span className = "text-ellipsis" > {
         txtVerification.value
-      } < /span> <
-      /p> <
-      /div> <
-      /div> {
+      } < /span> < /
+      p > <
+      /div> < /
+      div > {
         getVerificationError(domainInfo.verificationResponse) && ( <
           p className = "my-5 text-sm text-red-700" > {
             getVerificationError(domainInfo.verificationResponse)
@@ -129,32 +129,32 @@ const ConfiguredSection = ({
           /p>
         )
       } <
-      /div> <
-      /div> <
+      /div> < /
+      div > <
       />
     )
   }
 
   return ( <
-    >
-    <
-    div className = "flex items-center space-x-3 my-3 px-2 sm:px-10" >
-    <
-    svg viewBox = "0 0 24 24"
-    width = "24"
-    height = "24"
-    strokeWidth = "1.5"
-    strokeLinecap = "round"
-    strokeLinejoin = "round"
-    shapeRendering = "geometricPrecision" >
-    <
-    circle cx = "12"
-    cy = "12"
-    r = "10"
-    fill = {
-      domainInfo.configured ? '#1976d2' : '#d32f2f'
-    }
-    /> {
+      >
+      <
+      div className = "flex items-center space-x-3 my-3 px-2 sm:px-10" >
+      <
+      svg viewBox = "0 0 24 24"
+      width = "24"
+      height = "24"
+      strokeWidth = "1.5"
+      strokeLinecap = "round"
+      strokeLinejoin = "round"
+      shapeRendering = "geometricPrecision" >
+      <
+      circle cx = "12"
+      cy = "12"
+      r = "10"
+      fill = {
+        domainInfo.configured ? '#1976d2' : '#d32f2f'
+      }
+      /> {
       domainInfo.configured ? ( <
         >
         <
@@ -177,19 +177,18 @@ const ConfiguredSection = ({
       )
     } <
     /svg> <
-    p className = {
-      `${
+  p className = {
+    `${
             domainInfo.configured
               ? 'text-black font-normal'
               : 'text-red-700 font-medium'
           } text-sm`
-    } >
-    {
-      domainInfo.configured ? 'Valid' : 'Invalid'
-    }
-    Configuration <
-    /p> <
-    /div>
+  } > {
+    domainInfo.configured ? 'Valid' : 'Invalid'
+  }
+  Configuration <
+    /p> < /
+    div >
 
     {
       !domainInfo.configured && ( <
@@ -225,8 +224,8 @@ const ConfiguredSection = ({
                 } text-sm border-b-2 pb-1 transition-all ease duration-150`
         } >
         A Record(apex domain) <
-        /button> <
-        /div> <
+        /button> < /
+        div > <
         div className = "my-3 text-left" >
         <
         p className = "my-5 text-sm" >
@@ -234,41 +233,40 @@ const ConfiguredSection = ({
         continue:
           <
           /p> <
-          div className = "flex justify-start items-center space-x-10 bg-gray-50 p-2 rounded-md" >
-          <
-          div >
-          <
-          p className = "text-sm font-bold" > Type < /p> <
-          p className = "text-sm font-mono mt-2" > {
-            recordType
-          } < /p> <
-          /div> <
-          div >
-          <
-          p className = "text-sm font-bold" > Name < /p> <
-          p className = "text-sm font-mono mt-2" > {
-            recordType == 'CNAME' ? 'www' : '@'
-          } <
-          /p> <
-          /div> <
-          div >
-          <
-          p className = "text-sm font-bold" > Value < /p> <
-          p className = "text-sm font-mono mt-2" > {
-            recordType == 'CNAME' ?
-            `cname.platformize.co` :
-              `76.76.21.21`
-          } <
-          /p> <
-          /div> <
-          /div> <
-          /div> <
-          /div> <
-          />
+        div className = "flex justify-start items-center space-x-10 bg-gray-50 p-2 rounded-md" >
+        <
+        div >
+        <
+        p className = "text-sm font-bold" > Type < /p> <
+        p className = "text-sm font-mono mt-2" > {
+          recordType
+        } < /p> < /
+        div > <
+        div >
+        <
+        p className = "text-sm font-bold" > Name < /p> <
+        p className = "text-sm font-mono mt-2" > {
+          recordType == 'CNAME' ? 'www' : '@'
+        } <
+        /p> < /
+        div > <
+        div >
+        <
+        p className = "text-sm font-bold" > Value < /p> <
+        p className = "text-sm font-mono mt-2" > {
+          recordType == 'CNAME' ?
+          `cname.platformize.co` : `76.76.21.21`
+        } <
+        /p> < /
+        div > <
+        /div> < /
+        div > <
+        /div> < /
+        >
       )
     } <
     />
-  )
+)
 }
 
 export default ConfiguredSection

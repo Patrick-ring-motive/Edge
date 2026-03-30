@@ -33,8 +33,7 @@ const DomainCard = ({
     }
     target = "_blank"
     rel = "noreferrer"
-    className = "text-xl text-left font-semibold flex items-center" >
-    {
+    className = "text-xl text-left font-semibold flex items-center" > {
       domain
     } <
     span className = "inline-block ml-2" >
@@ -55,8 +54,8 @@ const DomainCard = ({
     <
     path d = "M10 14L21 3" / >
     <
-    /svg> <
-    /span> <
+    /svg> < /
+    span > <
     /a> <
     div className = "flex space-x-3" >
     <
@@ -74,8 +73,7 @@ const DomainCard = ({
                 ? 'cursor-not-allowed bg-gray-100'
                 : 'bg-white hover:text-black hover:border-black'
             } text-gray-500 border-gray-200 py-1.5 w-24 text-sm border-solid border rounded-md focus:outline-none transition-all ease-in-out duration-150`
-    } >
-    {
+    } > {
       isValidating ? < LoadingDots / > : 'Refresh'
     } <
     /button> <
@@ -99,20 +97,19 @@ const DomainCard = ({
       `${
               removing ? 'cursor-not-allowed bg-gray-100' : ''
             }bg-red-500 text-white border-red-500 hover:text-red-500 hover:bg-white py-1.5 w-24 text-sm border-solid border rounded-md focus:outline-none transition-all ease-in-out duration-150`
-    } >
-    {
+    } > {
       removing ? < LoadingDots / > : 'Remove'
     } <
-    /button> <
-    /div> <
+    /button> < /
+    div > <
     /div>
 
     <
     ConfiguredSection domainInfo = {
       domainInfo
     }
-    /> <
-    /div>
+    /> < /
+    div >
   )
 }
 

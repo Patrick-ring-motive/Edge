@@ -75,18 +75,17 @@ export default function SiteDrafts() {
                 ? 'cursor-not-allowed bg-gray-300 border-gray-300'
                 : 'text-white bg-black hover:bg-white hover:text-black border-black'
             } font-cal text-lg w-3/4 sm:w-40 tracking-wide border-2 px-5 py-3 transition-all ease-in-out duration-150`
-    } >
-    {
+    } > {
       creatingPost ? ( <
         LoadingDots / >
       ) : ( <
         >
-        New Draft < span className = "ml-2" > ＋ < /span> <
-        />
+        New Draft < span className = "ml-2" > ＋ < /span> < /
+        >
       )
     } <
-    /button> <
-    /div> <
+    /button> < /
+    div > <
     div className = "my-10 grid gap-y-10" > {
       data ? (
         data.posts.length > 0 ? (
@@ -110,8 +109,8 @@ export default function SiteDrafts() {
             alt = {
               post.name
             }
-            /> <
-            /div> <
+            /> < /
+            div > <
             div className = "relative p-10" >
             <
             h2 className = "font-cal text-3xl" > {
@@ -128,16 +127,15 @@ export default function SiteDrafts() {
             }
             target = "_blank"
             rel = "noreferrer"
-            className = "font-cal px-3 py-1 tracking-wide rounded bg-gray-200 text-gray-600 absolute bottom-5 left-10 whitespace-nowrap" >
-            {
+            className = "font-cal px-3 py-1 tracking-wide rounded bg-gray-200 text-gray-600 absolute bottom-5 left-10 whitespace-nowrap" > {
               data.site.subdomain
             }.vercel.im / {
               post.slug
             }↗ <
-            /a> <
-            /div> <
-            /div> <
-            /Link>
+            /a> < /
+            div > <
+            /div> < /
+            Link >
           ))
         ) : ( <
           >
@@ -156,15 +154,15 @@ export default function SiteDrafts() {
           <
           div className = "w-48 h-6 rounded-md bg-gray-300" / >
           <
-          /div> <
-          /div> <
+          /div> < /
+          div > <
           div className = "text-center" >
           <
           p className = "text-2xl font-cal text-gray-600" >
           No drafts yet.Click "New Draft"
           to create one. <
-          /p> <
-          /div> <
+          /p> < /
+          div > <
           />
         )
       ) : (
@@ -186,13 +184,13 @@ export default function SiteDrafts() {
           <
           div className = "w-48 h-6 rounded-md bg-gray-300 animate-pulse" / >
           <
-          /div> <
-          /div>
+          /div> < /
+          div >
         ))
       )
     } <
-    /div> <
-    /div> <
+    /div> < /
+    div > <
     /Layout>
   )
 }

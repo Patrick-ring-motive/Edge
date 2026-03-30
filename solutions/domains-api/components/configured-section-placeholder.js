@@ -6,8 +6,8 @@ const ConfiguredSectionPlaceholder = () => {
     <
     p className = "text-black text-gray-500 font-normal text-sm" >
     Loading Configuration <
-    /p> <
-    /div>
+    /p> < /
+    div >
   )
 }
 

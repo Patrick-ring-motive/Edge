@@ -26,7 +26,7 @@ export default function Home() {
     alt = "Platforms on Vercel" /
     >
     <
-    /div> <
-    /div>
+    /div> < /
+    div >
   )
 }

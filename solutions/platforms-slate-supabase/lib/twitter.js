@@ -80,12 +80,10 @@ export const getTweets = async (id) => {
     ...tweet.data,
     media: media || [],
     video: media && (media[0].type == 'video' || media[0].type == 'animated_gif') ?
-      await getTwitterMedia(id) :
-      null,
+      await getTwitterMedia(id) : null,
     polls: tweet?.includes?.polls,
     url_meta: media || referenced_tweets.length > 0 ?
-      null :
-      tweet.data?.entities?.urls[0],
+      null : tweet.data?.entities?.urls[0],
     referenced_tweets: referenced_tweets,
     author: getAuthorInfo(tweet.data?.author_id),
   }

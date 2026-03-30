@@ -134,8 +134,8 @@ export default function Post(props) {
     Date dateString = {
       data.createdAt
     }
-    /> <
-    /p> <
+    /> < /
+    p > <
     h1 className = "font-bold text-3xl font-cal md:text-6xl mb-10 text-gray-800" > {
       data.title
     } <
@@ -143,8 +143,8 @@ export default function Post(props) {
     p className = "text-md md:text-lg text-gray-600 w-10/12 m-auto" > {
       data.description
     } <
-    /p> <
-    /div> <
+    /p> < /
+    div > <
     /div> <
     div className = "relative h-80 md:h-150 w-full max-w-screen-lg lg:2/3 md:w-5/6 m-auto mb-10 md:mb-20 md:rounded-2xl overflow-hidden" >
     <
@@ -157,8 +157,8 @@ export default function Post(props) {
     src = {
       data.image
     }
-    /> <
-    /div>
+    /> < /
+    div >
 
     <
     article className = "w-11/12 sm:w-3/4 m-auto prose prose-md sm:prose-lg" > {

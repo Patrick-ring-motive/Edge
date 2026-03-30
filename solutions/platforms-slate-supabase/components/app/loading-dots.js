@@ -25,8 +25,8 @@ const LoadingDots = ({
         backgroundColor: color
       }
     }
-    /> <
-    /span>
+    /> < /
+    span >
   )
 }
 

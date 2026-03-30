@@ -112,8 +112,8 @@ export default function Login() {
     content = {
       logo
     }
-    /> <
-    /Head> <
+    /> < /
+    Head > <
     div className = "sm:mx-auto sm:w-full sm:max-w-md" >
     <
     img className = "mx-auto h-12 w-auto"
@@ -133,8 +133,8 @@ export default function Login() {
     rel = "noreferrer"
     className = "font-medium text-black hover:text-gray-800" >
     blog post <
-    /a> <
-    /p> <
+    /a> < /
+    p > <
     /div>
 
     <
@@ -155,8 +155,7 @@ export default function Login() {
       `${
               loading ? 'cursor-not-allowed' : ''
             } group flex justify-center items-center space-x-5 w-full sm:px-4 h-16 rounded-md focus:outline-none border-2 border-black`
-    } >
-    {
+    } > {
       loading ? ( <
         LoadingDots color = "#fff" / >
       ) : ( <
@@ -171,9 +170,9 @@ export default function Login() {
         /svg>
       )
     } <
-    /button> <
-    /div> <
-    /div> <
-    /div>
+    /button> < /
+    div > <
+    /div> < /
+    div >
   )
 }

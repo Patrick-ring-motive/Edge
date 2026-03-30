@@ -16,8 +16,8 @@ export default function Loader() {
     <
     div className = "h-12 w-80 bg-gray-200 animate-pulse rounded-md" / >
     <
-    /div> <
-    /div> <
+    /div> < /
+    div > <
     /div>
   )
 }

@@ -69,8 +69,8 @@ export default function Home() {
     height = {
       25
     }
-    /> <
-    /a>
+    /> < /
+    a >
 
     <
     main className = "flex flex-col items-center justify-center w-full flex-1 sm:px-20 text-center my-20" >
@@ -117,12 +117,11 @@ export default function Home() {
                 ? 'cursor-not-allowed bg-gray-100 text-gray-500 border-gray-300'
                 : 'bg-black text-white border-black hover:text-black hover:bg-white'
             } py-2 w-28 text-sm border-solid border rounded-md focus:outline-none transition-all ease-in-out duration-150`
-    } >
-    {
+    } > {
       adding ? < LoadingDots / > : 'Add'
     } <
-    /button> <
-    /form>
+    /button> < /
+    form >
 
     {
       error && ( <
@@ -160,8 +159,8 @@ export default function Home() {
           error.domain
         } < /b> since it&apos;s already assigned
         to another project. <
-        /p> <
-        /div>
+        /p> < /
+        div >
       )
     }
 
@@ -181,16 +180,15 @@ export default function Home() {
           }
           />
         )
-      }) :
-        [1, 2, 3, 4, 5].map((_, index) => {
+      }) : [1, 2, 3, 4, 5].map((_, index) => {
         return < DomainCardPlaceholder key = {
           index
         }
         />
       })
     } <
-    /div> <
-    /main>
+    /div> < /
+    main >
 
     <
     footer className = "flex items-center justify-center w-full h-24 border-t" >
@@ -212,10 +210,10 @@ export default function Home() {
     height = {
       16
     }
-    /> <
-    /div> <
-    /a> <
-    /footer> <
+    /> < /
+    div > <
+    /a> < /
+    footer > <
     /div>
   )
 }

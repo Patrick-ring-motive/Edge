@@ -43,8 +43,8 @@ export const LeftPattern = () => ( <
   fill = "currentColor" /
   >
   <
-  /pattern> <
-  /defs> <
+  /pattern> < /
+  defs > <
   rect width = {
     404
   }

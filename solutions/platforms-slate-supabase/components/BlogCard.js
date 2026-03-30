@@ -44,10 +44,10 @@ export default function BlogCard({
     Published < Date dateString = {
       data.createdAt
     }
-    /> <
-    /p> <
-    /div> <
-    /div> <
+    /> < /
+    p > <
+    /div> < /
+    div > <
     /Link>
   )
 }

@@ -86,8 +86,7 @@ const TextEditor = (props) => {
                     event.preventDefault()
                     toggleMark(editor, format)
                   }
-                } >
-                {
+                } > {
                   icon
                 } <
                 /Button>
@@ -114,18 +113,19 @@ const TextEditor = (props) => {
                 <
                 ToolbarButton format = "italic"
                 icon = {
-                  < span className = "italic" > I < /span>} /
-                  >
+                  <
+                  span className = "italic" > I < /span>} / >
                   <
                   ToolbarButton
                   format = "underline"
                   icon = {
-                    < span className = "underline" > U < /span>} /
-                    >
+                    <
+                    span className = "underline" > U < /span>} / >
                     <
                     ToolbarButton format = "code"
                     icon = {
-                      < span > {
+                      <
+                      span > {
                         `< >`
                       } < /span>} / >
                       <
@@ -135,8 +135,8 @@ const TextEditor = (props) => {
                       ToolbarButton format = "heading-two"
                       icon = "H2" / >
                       <
-                      /div> <
-                      /div> <
+                      /div> < /
+                      div > <
                       Editable
                       className = "mt-4"
                       renderElement = {
@@ -164,8 +164,8 @@ const TextEditor = (props) => {
                           }
                         }
                       }
-                      /> <
-                      /Slate>
+                      /> < /
+                      Slate >
                     )
                   }
 

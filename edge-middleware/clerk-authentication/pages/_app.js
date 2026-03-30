@@ -16,8 +16,8 @@ function MyApp({
     Component {
       ...pageProps
     }
-    /> <
-    /ClerkProvider>
+    /> < /
+    ClerkProvider >
   )
 }
 

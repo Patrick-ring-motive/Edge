@@ -13,8 +13,8 @@ export default function Loader() {
     } > < /div> <
     div className = {
       `${circleCommonClasses} animate-bounce400`
-    } > < /div> <
-    /div> <
+    } > < /div> < /
+    div > <
     /div>
   )
 }

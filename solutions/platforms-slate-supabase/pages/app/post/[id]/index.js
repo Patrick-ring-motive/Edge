@@ -98,8 +98,7 @@ const ToolbarButton = ({
         event.preventDefault()
         toggleMark(editor, format)
       }
-    } >
-    {
+    } > {
       icon
     } <
     /Button>
@@ -291,8 +290,8 @@ export default function Post() {
               <
               div className = "w-full border-t border-gray-300" / >
               <
-              /div> <
-              /div> {
+              /div> < /
+              div > {
                 postData?.content ? ( <
                   Slate editor = {
                     editor
@@ -328,8 +327,8 @@ export default function Post() {
                     toggleMark
                   }
                   icon = {
-                    < span className = "italic" > I < /span>} /
-                    >
+                    <
+                    span className = "italic" > I < /span>} / >
                     <
                     ToolbarButton
                     format = "underline"
@@ -340,8 +339,8 @@ export default function Post() {
                       toggleMark
                     }
                     icon = {
-                      < span className = "underline" > U < /span>} /
-                      >
+                      <
+                      span className = "underline" > U < /span>} / >
                       <
                       ToolbarButton
                       setCurrentMark = {
@@ -352,10 +351,10 @@ export default function Post() {
                       }
                       format = "code"
                       icon = {
-                        < span > {
+                        <
+                        span > {
                           `< >`
-                        } < /span>} /
-                        >
+                        } < /span>} / >
                         <
                         ToolbarButton
                         setCurrentMark = {
@@ -379,8 +378,8 @@ export default function Post() {
                         icon = "H2" /
                         >
                         <
-                        /div> <
-                        /div> <
+                        /div> < /
+                        div > <
                         Editable
                         className = "mt-4"
                         renderElement = {
@@ -404,8 +403,8 @@ export default function Post() {
                             }
                           }
                         }
-                        /> <
-                        /Slate>
+                        /> < /
+                        Slate >
                       ): null
                     } <
                     /div> <
@@ -419,12 +418,12 @@ export default function Post() {
                     <
                     p > {
                       post?.imlished ? 'Published' : 'Draft'
-                    } < /p> <
-                    /strong> <
+                    } < /p> < /
+                    strong > <
                     p > {
                       savedState
-                    } < /p> <
-                    /div> <
+                    } < /p> < /
+                    div > <
                     button
                     onClick = {
                       async () => {
@@ -433,8 +432,7 @@ export default function Post() {
                     }
                     title = {
                       disabled ?
-                      'Post must have a title, description, and content to be published.' :
-                        'Publish'
+                      'Post must have a title, description, and content to be published.' : 'Publish'
                     }
                     disabled = {
                       disabled
@@ -445,14 +443,13 @@ export default function Post() {
                   ? 'cursor-not-allowed bg-gray-300 border-gray-300'
                   : 'bg-black hover:bg-white hover:text-black border-black'
               } mx-2 w-32 h-12 text-lg text-white border-2 focus:outline-none transition-all ease-in-out duration-150`
-                    } >
-                    {
+                    } > {
                       publishing ? < LoadingDots / > : 'Publish  →'
                     } <
-                    /button> <
-                    /div> <
-                    /footer> <
-                    /Layout> <
+                    /button> < /
+                    div > <
+                    /footer> < /
+                    Layout > <
                     />
                   )
                 }

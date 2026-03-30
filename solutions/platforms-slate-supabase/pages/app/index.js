@@ -122,8 +122,8 @@ export default function AppIndex() {
     /> <
     span className = "px-5 bg-gray-100 h-full flex items-center rounded-r-lg border-l border-gray-600" >
     .vercel.im <
-    /span> <
-    /div> {
+    /span> < /
+    div > {
       error && ( <
         p className = "px-5 text-left text-red-500" >
         <
@@ -143,8 +143,8 @@ export default function AppIndex() {
     placeholder = "Description" /
     >
     <
-    /div> <
-    /div> <
+    /div> < /
+    div > <
     div className = "flex justify-between items-center mt-10 w-full" >
     <
     button type = "button"
@@ -169,14 +169,13 @@ export default function AppIndex() {
                   ? 'cursor-not-allowed text-gray-400 bg-gray-50'
                   : 'bg-white text-gray-600 hover:text-black'
               } w-full px-5 py-5 text-sm border-t border-l border-gray-300 rounded-br focus:outline-none focus:ring-0 transition-all ease-in-out duration-150`
-    } >
-    {
+    } > {
       creatingSite ? < LoadingDots / > : 'CREATE SITE'
     } <
-    /button> <
-    /div> <
-    /form> <
-    /Modal>
+    /button> < /
+    div > <
+    /form> < /
+    Modal >
 
     <
     div className = "py-20 max-w-screen-xl mx-auto px-10 sm:px-20" >
@@ -188,8 +187,8 @@ export default function AppIndex() {
       () => setShowModal(true)
     }
     className = "font-cal text-lg w-3/4 sm:w-40 tracking-wide text-white bg-black border-black border-2 px-5 py-3 hover:bg-white hover:text-black transition-all ease-in-out duration-150" >
-    New Site < span className = "ml-2" > ＋ < /span> <
-    /button> <
+    New Site < span className = "ml-2" > ＋ < /span> < /
+    button > <
     /div> <
     div className = "my-10 grid gap-y-10" > {
       sites ? (
@@ -214,8 +213,8 @@ export default function AppIndex() {
             alt = {
               site.name
             }
-            /> <
-            /div> <
+            /> < /
+            div > <
             div className = "relative p-10" >
             <
             h2 className = "font-cal text-3xl" > {
@@ -233,14 +232,13 @@ export default function AppIndex() {
             }
             target = "_blank"
             rel = "noreferrer"
-            className = "font-cal px-3 py-1 tracking-wide rounded bg-gray-200 text-gray-600 absolute bottom-5 left-10 whitespace-nowrap" >
-            {
+            className = "font-cal px-3 py-1 tracking-wide rounded bg-gray-200 text-gray-600 absolute bottom-5 left-10 whitespace-nowrap" > {
               site.subdomain
             }.vercel.im↗ <
-            /a> <
-            /div> <
-            /div> <
-            /Link>
+            /a> < /
+            div > <
+            /div> < /
+            Link >
           ))
         ) : ( <
           >
@@ -259,15 +257,15 @@ export default function AppIndex() {
           <
           div className = "w-48 h-6 rounded-md bg-gray-300" / >
           <
-          /div> <
-          /div> <
+          /div> < /
+          div > <
           div className = "text-center" >
           <
           p className = "text-2xl font-cal text-gray-600" >
           No sites yet.Click "New Site"
           to create one. <
-          /p> <
-          /div> <
+          /p> < /
+          div > <
           />
         )
       ) : (
@@ -289,13 +287,13 @@ export default function AppIndex() {
           <
           div className = "w-48 h-6 rounded-md bg-gray-300 animate-pulse" / >
           <
-          /div> <
-          /div>
+          /div> < /
+          div >
         ))
       )
     } <
-    /div> <
-    /div> <
+    /div> < /
+    div > <
     /Layout>
   )
 }

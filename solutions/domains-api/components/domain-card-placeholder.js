@@ -23,8 +23,9 @@ const DomainCardPlaceholder = () => {
       true
     }
     className = "bg-red-500 text-white border-red-500 hover:text-red-500 hover:bg-white py-1.5 w-24 text-sm border-solid border rounded-md focus:outline-none transition-all ease-in-out duration-150" >
-    < /button> <
-    /div> <
+    <
+    /button> < /
+    div > <
     /div> <
     ConfiguredSectionPlaceholder / >
     <
