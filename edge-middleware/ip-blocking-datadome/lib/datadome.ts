@@ -1,11 +1,16 @@
-import { NextRequest, NextResponse } from 'next/server'
+import {
+  NextRequest,
+  NextResponse
+} from 'next/server'
 
 const DATADOME_TIMEOUT = 500
 const DATADOME_URI_REGEX_EXCLUSION =
   /\.(avi|flv|mka|mkv|mov|mp4|mpeg|mpg|mp3|flac|ogg|ogm|opus|wav|webm|webp|bmp|gif|ico|jpeg|jpg|png|svg|svgz|swf|eot|otf|ttf|woff|woff2|css|less|js)$/i
 
 export default async function datadome(req: NextRequest) {
-  const { pathname } = req.nextUrl
+  const {
+    pathname
+  } = req.nextUrl
 
   if (DATADOME_URI_REGEX_EXCLUSION.test(pathname)) {
     console.log('ignore datadome')
@@ -18,9 +23,9 @@ export default async function datadome(req: NextRequest) {
     ModuleVersion: '0.1',
     ServerName: 'vercel',
     // this should be `x-real-ip` but it doesn't currently work on Edge Middleware
-    IP: req.headers.get('x-forwarded-for')
-      ? req.headers.get('x-forwarded-for')!.split(',')[0]
-      : '127.0.0.1',
+    IP: req.headers.get('x-forwarded-for') ?
+      req.headers.get('x-forwarded-for') !.split(',')[0] :
+      '127.0.0.1',
     // localhost won't likely be blocked by Datadome unless you use your real IP
     // IP: 'YOUR IP',
     Port: 0,
@@ -53,8 +58,7 @@ export default async function datadome(req: NextRequest) {
     ServerRegion: 'sfo1',
   }
   const dataDomeReq = fetch(
-    'http://api-cloudflare.datadome.co/validate-request/',
-    {
+    'http://api-cloudflare.datadome.co/validate-request/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
@@ -134,7 +138,7 @@ export default async function datadome(req: NextRequest) {
   }
 }
 
-function encode(query: Record<string, string>) {
+function encode(query: Record < string, string > ) {
   let e = ''
   for (const k in query) {
     const v = query[k]
@@ -148,28 +152,29 @@ function toHeaders(
   dataDomeResHeaders: Headers,
   listKey: string
 ) {
-  const map = new Map<string, string>()
-  const list = dataDomeResHeaders.get(listKey)!
-  for (const header of list.split(' ')) {
-    const value = dataDomeResHeaders.get(header)!
-    // workaround for a bug in DataDome where the cookie domain gets set to
-    // the entire public suffix (.vercel.app), which UAs refuse to set cookies for
-    // e.g.: https://devcenter.heroku.com/articles/cookies-and-herokuapp-com
-    if (
-      header.toLowerCase() === 'set-cookie' &&
-      /domain=\.vercel\.app/i.test(value)
-    ) {
-      map.set(
-        header,
-        value.replace(
-          /domain=\.vercel\.app/i,
-          `Domain=${reqHeaders.get('host')}`
-        )
-      )
-    } else {
-      map.set(header, value)
+  const map = new Map < string,
+    string > ()
+  const list = dataDomeResHeaders.get(listKey) !
+    for (const header of list.split(' ')) {
+      const value = dataDomeResHeaders.get(header) !
+        // workaround for a bug in DataDome where the cookie domain gets set to
+        // the entire public suffix (.vercel.app), which UAs refuse to set cookies for
+        // e.g.: https://devcenter.heroku.com/articles/cookies-and-herokuapp-com
+        if (
+          header.toLowerCase() === 'set-cookie' &&
+          /domain=\.vercel\.app/i.test(value)
+        ) {
+          map.set(
+            header,
+            value.replace(
+              /domain=\.vercel\.app/i,
+              `Domain=${reqHeaders.get('host')}`
+            )
+          )
+        } else {
+          map.set(header, value)
+        }
     }
-  }
   return map
 }
 
@@ -185,21 +190,21 @@ function getAuthorizationLength(req: NextRequest) {
 }
 
 // taken from DataDome-Cloudflare-1.7.0
-function stringify(obj: Record<string, string | number | null | undefined>) {
-  return obj
-    ? Object.keys(obj)
-        .map((key) => {
-          const value = obj[key]
-          if (value === undefined) {
-            return ''
-          }
-          return value === null || value === undefined
-            ? encodeURIComponent(key)
-            : encodeURIComponent(key) + '=' + encodeURIComponent(value)
-        })
-        .filter((x) => x.length > 0)
-        .join('&')
-    : ''
+function stringify(obj: Record < string, string | number | null | undefined > ) {
+  return obj ?
+    Object.keys(obj)
+    .map((key) => {
+      const value = obj[key]
+      if (value === undefined) {
+        return ''
+      }
+      return value === null || value === undefined ?
+        encodeURIComponent(key) :
+        encodeURIComponent(key) + '=' + encodeURIComponent(value)
+    })
+    .filter((x) => x.length > 0)
+    .join('&') :
+    ''
 }
 
 function getCookiesLength(cookies: NextRequest['cookies']) {
