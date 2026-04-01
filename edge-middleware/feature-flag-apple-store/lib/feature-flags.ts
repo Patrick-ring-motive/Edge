@@ -1,4 +1,7 @@
-import { createClient, parseConnectionString } from '@vercel/edge-config'
+import {
+  createClient,
+  parseConnectionString
+} from '@vercel/edge-config'
 
 interface FeatureFlags {
   storeClosed: boolean
@@ -10,7 +13,7 @@ const prefixKey = (key: string) => `featureFlagsAppleStore_${key}`
 export async function get(key: keyof FeatureFlags) {
   const prefixedKey = prefixKey(key)
   const edgeConfig = createClient(process.env.EDGE_CONFIG)
-  const featureFlag = await edgeConfig.get<FeatureFlags>(prefixedKey)
+  const featureFlag = await edgeConfig.get < FeatureFlags > (prefixedKey)
   return featureFlag
 }
 
@@ -33,21 +36,18 @@ export async function set(key: keyof FeatureFlags, value: boolean) {
   const prefixedKey = prefixKey(key)
 
   const response = await fetch(
-    `https://api.vercel.com/v1/edge-config/${edgeConfigId}/items?teamId=${process.env.TEAM_ID_VERCEL}`,
-    {
+    `https://api.vercel.com/v1/edge-config/${edgeConfigId}/items?teamId=${process.env.TEAM_ID_VERCEL}`, {
       method: 'PATCH',
       headers: {
         Authorization: `Bearer ${process.env.AUTH_BEARER_TOKEN}`,
         'content-type': 'application/json',
       },
       body: JSON.stringify({
-        items: [
-          {
-            operation: 'upsert',
-            key: prefixedKey,
-            value,
-          },
-        ],
+        items: [{
+          operation: 'upsert',
+          key: prefixedKey,
+          value,
+        }, ],
       }),
     }
   )
