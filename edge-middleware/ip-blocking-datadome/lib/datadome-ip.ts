@@ -8,10 +8,12 @@ export async function addIpRule(
   try {
     // Adding new Custom Rule
     const req = await fetch(
-      `https://customer-api.datadome.co/1.0/protection/custom-rules?apikey=${process.env.DATADOME_MANAGEMENT_KEY}`,
-      {
+      `https://customer-api.datadome.co/1.0/protection/custom-rules?apikey=${process.env.DATADOME_MANAGEMENT_KEY}`, {
         method: 'POST',
-        headers: { Accept: '*/*', 'Content-Type': 'application/json' },
+        headers: {
+          Accept: '*/*',
+          'Content-Type': 'application/json'
+        },
         body: JSON.stringify({
           data: {
             rule_name: `ip_rule_${ip}`, // Needs to be unique
@@ -36,10 +38,12 @@ export async function addIpRule(
 export async function removeRuleById(customRuleId: string) {
   try {
     const req = await fetch(
-      `https://customer-api.datadome.co/1.0/protection/custom-rules/${customRuleId}?apikey=${process.env.DATADOME_MANAGEMENT_KEY}`,
-      {
+      `https://customer-api.datadome.co/1.0/protection/custom-rules/${customRuleId}?apikey=${process.env.DATADOME_MANAGEMENT_KEY}`, {
         method: 'DELETE',
-        headers: { Accept: '*/*', 'Content-Type': 'application/json' },
+        headers: {
+          Accept: '*/*',
+          'Content-Type': 'application/json'
+        },
       }
     )
     return req.json()
@@ -51,14 +55,18 @@ export async function removeRuleById(customRuleId: string) {
 export async function getAllRules() {
   try {
     const req = await fetch(
-      `https://customer-api.datadome.co/1.0/protection/custom-rules?apikey=${process.env.DATADOME_MANAGEMENT_KEY}`,
-      {
+      `https://customer-api.datadome.co/1.0/protection/custom-rules?apikey=${process.env.DATADOME_MANAGEMENT_KEY}`, {
         method: 'GET',
-        headers: { Accept: '*/*', 'Content-Type': 'application/json' },
+        headers: {
+          Accept: '*/*',
+          'Content-Type': 'application/json'
+        },
       }
     )
     const {
-      data: { custom_rules },
+      data: {
+        custom_rules
+      },
     } = await req.json()
     return custom_rules
   } catch (err) {
