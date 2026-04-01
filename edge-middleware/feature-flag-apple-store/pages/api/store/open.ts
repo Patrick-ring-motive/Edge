@@ -1,4 +1,6 @@
-import { set } from 'lib/feature-flags'
+import {
+  set
+} from 'lib/feature-flags'
 
 export const config = {
   runtime: 'edge',
@@ -13,17 +15,24 @@ export default async function OpenStore() {
     }
 
     return new Response(
-      JSON.stringify({ status: 'ok', message: 'Store is now open' }),
-      { headers: { 'Content-Type': 'application/json' } }
+      JSON.stringify({
+        status: 'ok',
+        message: 'Store is now open'
+      }), {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }
     )
   } catch (err) {
     return new Response(
       JSON.stringify({
         status: 'error',
         message: err instanceof Error ? err.message : err,
-      }),
-      {
-        headers: { 'Content-Type': 'application/json' },
+      }), {
+        headers: {
+          'Content-Type': 'application/json'
+        },
       }
     )
   }
