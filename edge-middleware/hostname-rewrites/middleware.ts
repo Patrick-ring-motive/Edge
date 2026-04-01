@@ -1,5 +1,10 @@
-import { NextRequest, NextResponse } from 'next/server'
-import { getHostnameDataOrDefault } from './lib/db'
+import {
+  NextRequest,
+  NextResponse
+} from 'next/server'
+import {
+  getHostnameDataOrDefault
+} from './lib/db'
 
 export const config = {
   matcher: ['/', '/about', '/_sites/:path'],
