@@ -2,12 +2,6 @@
 
 import * as sdk from "hypertune";
 
-
-
-
-
-
-
 const queryCode = `
   # To set up the SDK, follow the quickstart:
   # https://docs.hypertune.com/quickstart
@@ -22,16 +16,34 @@ const queryCode = `
   }
   `;
 
-const query = {"Query":{"objectTypeName":"Query","selection":{"root":{"fieldArguments":{"__isPartialObject__":true},"fieldQuery":{"Root":{"objectTypeName":"Root","selection":{"exampleFlag":{"fieldArguments":{},"fieldQuery":null}}}}}}}};
+const query = {
+  "Query": {
+    "objectTypeName": "Query",
+    "selection": {
+      "root": {
+        "fieldArguments": {
+          "__isPartialObject__": true
+        },
+        "fieldQuery": {
+          "Root": {
+            "objectTypeName": "Root",
+            "selection": {
+              "exampleFlag": {
+                "fieldArguments": {},
+                "fieldQuery": null
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+};
 
-
-
-
-  
 export type Rec4 = {
   id: string;
-name: string;
-email: string;
+  name: string;
+  email: string;
 }
 
 export type Rec3 = {
@@ -43,22 +55,22 @@ export type Rec2 = {
 }
 
 export type Rec = {
-  
-}
-  
 
-  
+}
+
 export class RootNode extends sdk.Node {
-  typeName = "Root" as const;
+  typeName = "Root"
+  as
+  const;
 
   exampleFlag(args: Rec = {}): sdk.BooleanNode {
-        const props0 = this.getField("exampleFlag", args);
-        const expression0 = props0.expression;
+    const props0 = this.getField("exampleFlag", args);
+    const expression0 = props0.expression;
 
-        if (
-    expression0 &&
-    expression0.type === "BooleanExpression"
-    
+    if (
+      expression0 &&
+      expression0.type === "BooleanExpression"
+
     ) {
       return new sdk.BooleanNode(props0);
     }
@@ -66,21 +78,23 @@ export class RootNode extends sdk.Node {
     const node = new sdk.BooleanNode(props0);
     node._logUnexpectedTypeError();
     return node;
-  
-      }
+
+  }
 }
 
 export class QueryNode extends sdk.Node {
-  typeName = "Query" as const;
+  typeName = "Query"
+  as
+  const;
 
   root(args: Rec2): RootNode {
-        const props0 = this.getField("root", args);
-        const expression0 = props0.expression;
+    const props0 = this.getField("root", args);
+    const expression0 = props0.expression;
 
-                if (
-    expression0 &&
-    expression0.type === "ObjectExpression"
-    && expression0.objectTypeName === "Root"
+    if (
+      expression0 &&
+      expression0.type === "ObjectExpression" &&
+      expression0.objectTypeName === "Root"
     ) {
       return new RootNode(props0);
     }
@@ -88,8 +102,8 @@ export class QueryNode extends sdk.Node {
     const node = new RootNode(props0);
     node._logUnexpectedTypeError();
     return node;
-  
-      }
+
+  }
 }
 
 export function initializeHypertune(
@@ -98,16 +112,19 @@ export function initializeHypertune(
 ): QueryNode {
   const defaultOptions = {
     query
-    
-    
-    ,queryCode
-    ,variableValues
-    
+
+    ,
+    queryCode,
+    variableValues
+
   }
 
   return sdk.initialize(
     QueryNode,
-    
-    { ...defaultOptions, ...options }
+
+    {
+      ...defaultOptions,
+      ...options
+    }
   );
 }
