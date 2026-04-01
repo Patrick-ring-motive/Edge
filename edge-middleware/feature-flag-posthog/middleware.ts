@@ -1,6 +1,15 @@
-import { NextRequest, NextResponse } from 'next/server'
-import { DISTINCT_ID_COOKIE_NAME, FLAGS } from '@lib/constants'
-import { type FlagsMatcher, getFeatureFlagVariant } from '@lib/posthog-api'
+import {
+  NextRequest,
+  NextResponse
+} from 'next/server'
+import {
+  DISTINCT_ID_COOKIE_NAME,
+  FLAGS
+} from '@lib/constants'
+import {
+  type FlagsMatcher,
+  getFeatureFlagVariant
+} from '@lib/posthog-api'
 
 const flagsByPath: FlagsMatcher = {
   '/product': {
