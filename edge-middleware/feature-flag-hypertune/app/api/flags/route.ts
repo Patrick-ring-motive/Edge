@@ -1,4 +1,6 @@
-import { NextResponse } from 'next/server'
+import {
+  NextResponse
+} from 'next/server'
 import hypertune from '../../../lib/hypertune'
 
 export const runtime = 'edge'
@@ -9,11 +11,17 @@ export async function GET() {
 
   const rootNode = hypertune.root({
     context: {
-      user: { id: 'test', name: 'Test', email: 'test@test.com' },
+      user: {
+        id: 'test',
+        name: 'Test',
+        email: 'test@test.com'
+      },
     },
   })
-  const exampleFlag = rootNode.exampleFlag().get(/* fallback */ false)
+  const exampleFlag = rootNode.exampleFlag().get( /* fallback */ false)
   console.log('Edge Function flag:', exampleFlag)
 
-  return NextResponse.json({ exampleFlag })
+  return NextResponse.json({
+    exampleFlag
+  })
 }
