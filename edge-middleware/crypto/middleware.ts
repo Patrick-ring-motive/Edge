@@ -1,4 +1,7 @@
-import { NextResponse, NextRequest } from 'next/server'
+import {
+  NextResponse,
+  NextRequest
+} from 'next/server'
 
 // ------------------
 // Using Crypto with Edge Middleware
