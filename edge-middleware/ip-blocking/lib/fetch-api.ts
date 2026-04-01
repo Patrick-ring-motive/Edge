@@ -1,6 +1,8 @@
 export default async function fetchAPI(
   url: string,
-  options: RequestInit & { data?: any } = {}
+  options: RequestInit & {
+    data ? : any
+  } = {}
 ) {
   try {
     const res = await fetch(`/api${url}`, {
@@ -10,7 +12,9 @@ export default async function fetchAPI(
         Accept: 'application/json',
         'Content-Type': 'application/json; charset=utf-8',
       },
-      ...(options.data ? { body: JSON.stringify(options.data) } : {}),
+      ...(options.data ? {
+        body: JSON.stringify(options.data)
+      } : {}),
     })
     const data = await res.json()
     return data
