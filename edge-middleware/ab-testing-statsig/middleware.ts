@@ -1,8 +1,20 @@
-import { NextRequest, NextResponse, NextFetchEvent } from 'next/server'
+import {
+  NextRequest,
+  NextResponse,
+  NextFetchEvent
+} from 'next/server'
 import Statsig from 'statsig-node'
-import { EdgeConfigDataAdapter } from 'statsig-node-vercel'
-import { createClient } from '@vercel/edge-config'
-import { EXPERIMENT, UID_COOKIE, GROUP_PARAM_FALLBACK } from './lib/constants'
+import {
+  EdgeConfigDataAdapter
+} from 'statsig-node-vercel'
+import {
+  createClient
+} from '@vercel/edge-config'
+import {
+  EXPERIMENT,
+  UID_COOKIE,
+  GROUP_PARAM_FALLBACK
+} from './lib/constants'
 
 // We'll use this to validate a random UUID
 const IS_UUID = /^[0-9a-f-]+$/i
@@ -28,10 +40,14 @@ export async function middleware(req: NextRequest, event: NextFetchEvent) {
     hasUserId = false
   }
 
-  await Statsig.initialize(process.env.STATSIG_SERVER_API_KEY!, { dataAdapter })
+  await Statsig.initialize(process.env.STATSIG_SERVER_API_KEY!, {
+    dataAdapter
+  })
 
-  const experiment = await Statsig.getExperiment({ userID: userId }, EXPERIMENT)
-  const bucket = experiment.get<string>('bucket', GROUP_PARAM_FALLBACK)
+  const experiment = await Statsig.getExperiment({
+    userID: userId
+  }, EXPERIMENT)
+  const bucket = experiment.get < string > ('bucket', GROUP_PARAM_FALLBACK)
 
   // Clone the URL and change its pathname to point to a bucket
   const url = req.nextUrl.clone()
