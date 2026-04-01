@@ -11,12 +11,13 @@ export type Flags = keyof FlagsConfig
 
 export type FlagsMatcher = {
   [x: string]:
-    | {
-        cookie: string
-        name: Flags
-        rewrite(enabled: boolean): string
-      }
-    | undefined
+    |
+    {
+      cookie: string
+      name: Flags
+      rewrite(enabled: boolean): string
+    } |
+    undefined
 }
 
 const flagsConfig: FlagsConfig = c.ConfigJSON[FeatureFlags]
@@ -25,7 +26,7 @@ const flagsConfig: FlagsConfig = c.ConfigJSON[FeatureFlags]
  * Returns a value from the cached config, if the value has a target set it will
  * randomly pick one based on each target' percentage
  */
-export function getValue<K extends Flags>(key: K): boolean {
+export function getValue < K extends Flags > (key: K): boolean {
   const setting = flagsConfig[key]
   const percentageItems = setting[RolloutPercentageItems]
 
