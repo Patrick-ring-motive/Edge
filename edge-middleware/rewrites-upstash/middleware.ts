@@ -1,4 +1,7 @@
-import { NextRequest, NextResponse } from 'next/server'
+import {
+  NextRequest,
+  NextResponse
+} from 'next/server'
 import api from './api'
 
 export const config = {
@@ -13,9 +16,9 @@ export async function middleware(req: NextRequest) {
   const hasStock = await api.cache.get(id)
 
   // Rewrite to the correct url
-  req.nextUrl.pathname = hasStock
-    ? `/product/${id}/`
-    : `/product/${id}/no-stock`
+  req.nextUrl.pathname = hasStock ?
+    `/product/${id}/` :
+    `/product/${id}/no-stock`
 
   // Return rewrited path
   return NextResponse.rewrite(req.nextUrl)
