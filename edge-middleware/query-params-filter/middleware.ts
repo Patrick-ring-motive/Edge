@@ -1,4 +1,7 @@
-import { NextRequest, NextResponse } from 'next/server'
+import {
+  NextRequest,
+  NextResponse
+} from 'next/server'
 
 const allowedParams = ['allowed']
 
