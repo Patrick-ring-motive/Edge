@@ -1,14 +1,20 @@
-import { NextRequest, NextResponse } from 'next/server'
-import { upstashRest } from './upstash'
+import {
+  NextRequest,
+  NextResponse
+} from 'next/server'
+import {
+  upstashRest
+} from './upstash'
 import redirectsJson from './redirects.json'
 
 type LocalRedirects = {
   [k: string]:
-    | {
-        destination: string
-        permanent: boolean
-      }
-    | undefined
+    |
+    {
+      destination: string
+      permanent: boolean
+    } |
+    undefined
 }
 
 export default async function redirects(req: NextRequest) {
@@ -34,7 +40,9 @@ export default async function redirects(req: NextRequest) {
 
   start = Date.now()
 
-  const { result } = await upstashRest([
+  const {
+    result
+  } = await upstashRest([
     'HGET',
     'redirects',
     encodeURIComponent(url.pathname),
