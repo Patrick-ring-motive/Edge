@@ -1,6 +1,12 @@
 //@ts-ignore
-import { createInstance } from '@optimizely/optimizely-sdk/dist/optimizely.lite.min.js'
-import { NextRequest, NextFetchEvent, NextResponse } from 'next/server'
+import {
+  createInstance
+} from '@optimizely/optimizely-sdk/dist/optimizely.lite.min.js'
+import {
+  NextRequest,
+  NextFetchEvent,
+  NextResponse
+} from 'next/server'
 import optimizelyDatafile from './lib/optimizely/datafile.json'
 
 const VERCEL_EDGE_CLIENT_ENGINE = 'javascript-sdk/vercel-edge'
@@ -19,7 +25,12 @@ export async function middleware(req: NextRequest, ev: NextFetchEvent) {
     datafile: optimizelyDatafile,
     clientEngine: VERCEL_EDGE_CLIENT_ENGINE,
     eventDispatcher: {
-      dispatchEvent: ({ url, params }: { url: string; params: any }) => {
+      dispatchEvent: ({
+        url,
+        params
+      }: {
+        url: string;params: any
+      }) => {
         // Tell edge function to wait for this promise to fullfill.
         ev.waitUntil(
           fetch(url, {
@@ -38,7 +49,7 @@ export async function middleware(req: NextRequest, ev: NextFetchEvent) {
   const decision = userContext!.decide('product_sort')
 
   // Fetch datafile revision for debugging.
-  const revision = instance!.getOptimizelyConfig()!.revision
+  const revision = instance!.getOptimizelyConfig() !.revision
 
   console.log(`[OPTIMIZELY] Datafile Revision: ${revision}`)
   console.log(`[OPTIMIZELY] userId: ${userId}`)
