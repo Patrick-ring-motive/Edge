@@ -1,6 +1,13 @@
-import { NextRequest, NextResponse } from 'next/server'
-import { get } from 'lib/feature-flags'
-import { parseConnectionString } from '@vercel/edge-config'
+import {
+  NextRequest,
+  NextResponse
+} from 'next/server'
+import {
+  get
+} from 'lib/feature-flags'
+import {
+  parseConnectionString
+} from '@vercel/edge-config'
 
 export const config = {
   matcher: '/',
