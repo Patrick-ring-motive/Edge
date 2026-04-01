@@ -1,4 +1,7 @@
-import { NextRequest, NextResponse } from 'next/server'
+import {
+  NextRequest,
+  NextResponse
+} from 'next/server'
 import Replicate from 'replicate'
 
 export const config = {
@@ -14,8 +17,7 @@ export default async function handler(req: NextRequest) {
     req.nextUrl.searchParams.get('imageUrl') || 'https://dub.sh/confpic'
 
   const output = await replicate.run(
-    'salesforce/blip:2e1dddc8621f72155f24cf2e0adbde548458d3cab9f00c0139eea840d0ac4746',
-    {
+    'salesforce/blip:2e1dddc8621f72155f24cf2e0adbde548458d3cab9f00c0139eea840d0ac4746', {
       input: {
         image,
       },
