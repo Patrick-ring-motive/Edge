@@ -1,5 +1,9 @@
-import { NextResponse } from 'next/server'
-import type { NextRequest } from 'next/server'
+import {
+  NextResponse
+} from 'next/server'
+import type {
+  NextRequest
+} from 'next/server'
 
 export function middleware(request: NextRequest) {
   // Clone the request headers
@@ -15,7 +19,7 @@ export function middleware(request: NextRequest) {
 
   // Delete an existing request header
   requestHeaders.delete('x-from-client')
-  
+
   // You can also set request headers in NextResponse.rewrite
   return NextResponse.next({
     request: {
