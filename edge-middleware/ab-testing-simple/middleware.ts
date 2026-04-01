@@ -1,6 +1,14 @@
-import { NextRequest, NextResponse } from 'next/server'
-import { getBucket } from '@lib/ab-testing'
-import { HOME_BUCKETS, MARKETING_BUCKETS } from '@lib/buckets'
+import {
+  NextRequest,
+  NextResponse
+} from 'next/server'
+import {
+  getBucket
+} from '@lib/ab-testing'
+import {
+  HOME_BUCKETS,
+  MARKETING_BUCKETS
+} from '@lib/buckets'
 
 type Route = {
   page: string
@@ -8,7 +16,7 @@ type Route = {
   buckets: readonly string[]
 }
 
-const ROUTES: Record<string, Route | undefined> = {
+const ROUTES: Record < string, Route | undefined > = {
   '/home': {
     page: '/home',
     cookie: 'bucket-home',
@@ -26,7 +34,9 @@ export const config = {
 }
 
 export default function middleware(req: NextRequest) {
-  const { pathname } = req.nextUrl
+  const {
+    pathname
+  } = req.nextUrl
   const route = ROUTES[pathname]
 
   if (!route) return
