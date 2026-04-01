@@ -1,4 +1,7 @@
-import { NextApiRequest, NextApiResponse } from 'next'
+import {
+  NextApiRequest,
+  NextApiResponse
+} from 'next'
 
 import api from '../../../../api'
 
@@ -16,5 +19,7 @@ export default async function handler(req: Request, res: NextApiResponse) {
   await api.cache.set(req.query.id, hasStock)
 
   // Return response
-  return res.status(200).json({ stock: hasStock })
+  return res.status(200).json({
+    stock: hasStock
+  })
 }
