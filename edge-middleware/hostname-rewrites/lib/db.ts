@@ -1,5 +1,4 @@
-const hostnamesDB = [
-  {
+const hostnamesDB = [{
     name: 'Site 1',
     description: 'Subdomain + custom domain',
     subdomain: 'subdomain-1',
@@ -27,7 +26,7 @@ const DEFAULT_HOST = hostnamesDB.find((h) => h.defaultForPreview)
  * This method is used by middleware.ts
  */
 export async function getHostnameDataOrDefault(
-  subdomainOrCustomDomain?: string
+  subdomainOrCustomDomain ? : string
 ) {
   if (!subdomainOrCustomDomain) return DEFAULT_HOST
 
@@ -37,9 +36,9 @@ export async function getHostnameDataOrDefault(
   // fetch data from mock database using the site value as the key
   return (
     hostnamesDB.find((item) =>
-      customDomain
-        ? item.customDomain === subdomainOrCustomDomain
-        : item.subdomain === subdomainOrCustomDomain
+      customDomain ?
+      item.customDomain === subdomainOrCustomDomain :
+      item.subdomain === subdomainOrCustomDomain
     ) ?? DEFAULT_HOST
   )
 }
@@ -63,7 +62,11 @@ export async function getSubdomainPaths() {
 
   // build paths for each of the sites in the previous two lists
   return subdomains.map((item) => {
-    return { params: { site: item.subdomain } }
+    return {
+      params: {
+        site: item.subdomain
+      }
+    }
   })
 }
 
