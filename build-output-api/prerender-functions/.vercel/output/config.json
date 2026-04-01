@@ -1,8 +1,13 @@
 {
   "version": 3,
   "routes": [
-    { "handle": "filesystem" },
-    { "src": "/blog/(?<slug>[^/]*)", "dest": "/blog/post?slug=$slug" }
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "/blog/(?<slug>[^/]*)",
+      "dest": "/blog/post?slug=$slug"
+    }
   ],
   "overrides": {
     "blog/one.html": {
