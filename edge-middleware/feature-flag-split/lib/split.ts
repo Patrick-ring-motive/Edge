@@ -3,8 +3,12 @@ import {
   PluggableStorage,
   ErrorLogger,
 } from '@splitsoftware/splitio-browserjs'
-import { EdgeConfigWrapper } from '@splitsoftware/vercel-integration-utils'
-import { createClient } from '@vercel/edge-config'
+import {
+  EdgeConfigWrapper
+} from '@splitsoftware/vercel-integration-utils'
+import {
+  createClient
+} from '@vercel/edge-config'
 
 const edgeConfigClient = createClient(process.env.EDGE_CONFIG)
 
