@@ -1,14 +1,19 @@
-import { type Flags, POSTHOG_API_KEY, POSTHOG_HOST } from './constants'
+import {
+  type Flags,
+  POSTHOG_API_KEY,
+  POSTHOG_HOST
+} from './constants'
 
 export type FlagValue = boolean | string | undefined
 
 export type FlagsMatcher = {
   [x: string]:
-    | {
-        name: Flags
-        rewrite(value: FlagValue): string
-      }
-    | undefined
+    |
+    {
+      name: Flags
+      rewrite(value: FlagValue): string
+    } |
+    undefined
 }
 
 /**
@@ -22,7 +27,7 @@ export type FlagsMatcher = {
 export async function getFeatureFlagVariant(
   distinctUserId: string,
   featureName: Flags
-): Promise<FlagValue> {
+): Promise < FlagValue > {
   if (!distinctUserId) {
     throw new Error(`distinctUserId is required and it can't be empty`)
   }
