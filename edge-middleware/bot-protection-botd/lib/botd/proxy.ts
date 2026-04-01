@@ -1,4 +1,7 @@
-import { NextRequest, NextResponse } from 'next/server'
+import {
+  NextRequest,
+  NextResponse
+} from 'next/server'
 import {
   BOTD_DEFAULT_PATH,
   BOTD_DEFAULT_URL,
@@ -6,7 +9,7 @@ import {
   BOTD_PROXY_JS,
 } from './constants'
 
-type NextURL = Parameters<typeof NextResponse['rewrite']>[0]
+type NextURL = Parameters < typeof NextResponse['rewrite'] > [0]
 
 type Proxies = {
   [key: string]: (req: NextRequest) => NextURL
