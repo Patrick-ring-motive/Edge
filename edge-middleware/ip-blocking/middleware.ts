@@ -1,6 +1,12 @@
-import type { NextRequest } from 'next/server'
-import { NextResponse } from 'next/server'
-import { blockedIp } from '@lib/rules/ip'
+import type {
+  NextRequest
+} from 'next/server'
+import {
+  NextResponse
+} from 'next/server'
+import {
+  blockedIp
+} from '@lib/rules/ip'
 
 export const config = {
   matcher: ['/blocked', '/am-i-blocked'],
