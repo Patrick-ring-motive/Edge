@@ -1,4 +1,6 @@
-import type { NextRequest } from 'next/server'
+import type {
+  NextRequest
+} from 'next/server'
 import datadome from '@lib/datadome'
 
 export const config = {
@@ -8,7 +10,9 @@ export const config = {
 }
 
 export default async function middleware(req: NextRequest) {
-  const { pathname } = req.nextUrl
+  const {
+    pathname
+  } = req.nextUrl
 
   // Force the page to be blocked by DataDome
   if (pathname === '/blocked') {
