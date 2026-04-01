@@ -3,8 +3,13 @@
  *
  * It would not be needed in a real application.
  */
-import { NextRequest, NextResponse } from 'next/server'
-import { has } from '@vercel/edge-config'
+import {
+  NextRequest,
+  NextResponse
+} from 'next/server'
+import {
+  has
+} from '@vercel/edge-config'
 
 export const config = {
   matcher: ['/', '/about', '/marketing'],
