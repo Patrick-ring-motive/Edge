@@ -1,4 +1,6 @@
-import { NextResponse } from 'next/server'
+import {
+  NextResponse
+} from 'next/server'
 
 export function middleware() {
   // Store the response so we can modify its headers
