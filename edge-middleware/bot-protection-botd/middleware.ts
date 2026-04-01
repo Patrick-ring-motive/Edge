@@ -1,5 +1,10 @@
-import { NextRequest, NextResponse } from 'next/server'
-import { botdEdge } from '@lib/botd'
+import {
+  NextRequest,
+  NextResponse
+} from 'next/server'
+import {
+  botdEdge
+} from '@lib/botd'
 
 export const config = {
   // It's possible to run Botd for all paths, but it's better to take
