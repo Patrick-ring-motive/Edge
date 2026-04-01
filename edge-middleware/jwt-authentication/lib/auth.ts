@@ -1,7 +1,18 @@
-import type { NextRequest, NextResponse } from 'next/server'
-import { nanoid } from 'nanoid'
-import { SignJWT, jwtVerify } from 'jose'
-import { USER_TOKEN, getJwtSecretKey } from './constants'
+import type {
+  NextRequest,
+  NextResponse
+} from 'next/server'
+import {
+  nanoid
+} from 'nanoid'
+import {
+  SignJWT,
+  jwtVerify
+} from 'jose'
+import {
+  USER_TOKEN,
+  getJwtSecretKey
+} from './constants'
 
 interface UserJwtPayload {
   jti: string
@@ -34,7 +45,9 @@ export async function verifyAuth(req: NextRequest) {
  */
 export async function setUserCookie(res: NextResponse) {
   const token = await new SignJWT({})
-    .setProtectedHeader({ alg: 'HS256' })
+    .setProtectedHeader({
+      alg: 'HS256'
+    })
     .setJti(nanoid())
     .setIssuedAt()
     .setExpirationTime('2h')
@@ -52,6 +65,9 @@ export async function setUserCookie(res: NextResponse) {
  * Expires the user token cookie
  */
 export function expireUserCookie(res: NextResponse) {
-  res.cookies.set(USER_TOKEN, '', { httpOnly: true, maxAge: 0 })
+  res.cookies.set(USER_TOKEN, '', {
+    httpOnly: true,
+    maxAge: 0
+  })
   return res
 }
