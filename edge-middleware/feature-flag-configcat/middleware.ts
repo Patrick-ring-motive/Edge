@@ -1,5 +1,12 @@
-import { type NextRequest, NextResponse } from 'next/server'
-import { type FlagsMatcher, getValue, type Flags } from '@lib/configcat'
+import {
+  type NextRequest,
+  NextResponse
+} from 'next/server'
+import {
+  type FlagsMatcher,
+  getValue,
+  type Flags
+} from '@lib/configcat'
 
 const FLAGS: FlagsMatcher = {
   '/about': {
