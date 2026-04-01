@@ -1,4 +1,8 @@
-import { NextRequest, NextResponse, userAgent } from 'next/server'
+import {
+  NextRequest,
+  NextResponse,
+  userAgent
+} from 'next/server'
 
 // Set pathname were middleware will be executed
 export const config = {
@@ -7,7 +11,9 @@ export const config = {
 
 export function middleware(req: NextRequest) {
   // Parse user agent
-  const { device } = userAgent(req)
+  const {
+    device
+  } = userAgent(req)
 
   // Check the viewport
   const viewport = device.type === 'mobile' ? 'mobile' : 'desktop'
