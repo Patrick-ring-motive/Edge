@@ -1,7 +1,7 @@
 export default async function fetchAPI(path = '/', method = 'GET', body = {}) {
   const API = '/api'
   let err
-  let ops: Record<string, any> = {
+  let ops: Record < string, any > = {
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json; charset=utf-8',
