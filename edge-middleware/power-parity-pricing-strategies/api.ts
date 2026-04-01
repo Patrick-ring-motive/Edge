@@ -1,5 +1,12 @@
-import { DELAY, REGIONS, STORE_URL } from './constants'
-import type { Country, Product } from './types'
+import {
+  DELAY,
+  REGIONS,
+  STORE_URL
+} from './constants'
+import type {
+  Country,
+  Product
+} from './types'
 
 const PRODUCT: Product = {
   id: 'mug-nextjs',
@@ -10,7 +17,7 @@ const PRODUCT: Product = {
   discount: REGIONS['1'].discount,
   link: `${STORE_URL}/cart/${REGIONS['1'].id}:1`,
 }
-export const PRODUCTS: Record<string, Product> = {
+export const PRODUCTS: Record < string, Product > = {
   // Afghanistan
   af: {
     ...PRODUCT,
@@ -1519,7 +1526,9 @@ export default {
   product: {
     fetch: async ({
       country,
-    }: { country?: Country } = {}): Promise<Product> => {
+    }: {
+      country ? : Country
+    } = {}): Promise < Product > => {
       let product = PRODUCT
 
       if (country && PRODUCTS[country]) {
@@ -1533,7 +1542,7 @@ export default {
 
       return new Promise((resolve) => setTimeout(() => resolve(product), delay))
     },
-    countries: async (): Promise<Country[]> =>
+    countries: async (): Promise < Country[] > =>
       Object.keys(PRODUCTS) as Country[],
   },
 }
