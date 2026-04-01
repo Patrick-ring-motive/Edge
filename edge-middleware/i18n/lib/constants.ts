@@ -1,10 +1,11 @@
-import { Dictionary } from './types'
+import {
+  Dictionary
+} from './types'
 
-export const DICTIONARIES: Record<string, Dictionary> = {
+export const DICTIONARIES: Record < string, Dictionary > = {
   default: {
     title: 'i18n Example',
-    greet:
-      'Hello!, we could not detect your locale so we defaulted to english.',
+    greet: 'Hello!, we could not detect your locale so we defaulted to english.',
     subtitle: 'Localized text based on geolocation headers',
     link: 'See headers documentation',
   },
