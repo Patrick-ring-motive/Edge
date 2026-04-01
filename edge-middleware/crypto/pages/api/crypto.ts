@@ -1,4 +1,6 @@
-import type { NextRequest } from 'next/server'
+import type {
+  NextRequest
+} from 'next/server'
 
 // ------------------
 // Using Crypto with Edge Middleware and Edge Functions
@@ -22,7 +24,10 @@ export default async function CryptoEdgeAPIRoute(request: NextRequest) {
 
   // Encrypt
   const iv = crypto.getRandomValues(new Uint8Array(12))
-  const alg = { name: 'AES-GCM', iv: iv }
+  const alg = {
+    name: 'AES-GCM',
+    iv: iv
+  }
   const encrpytKey = await crypto.subtle.importKey('raw', pwHash, alg, false, [
     'encrypt',
   ])
@@ -46,7 +51,10 @@ export default async function CryptoEdgeAPIRoute(request: NextRequest) {
       decryptedText,
       iv,
       fromMiddleware,
-    }),
-    { headers: { 'Content-Type': 'application/json' } }
+    }), {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }
   )
 }
