@@ -7,7 +7,9 @@ async function upstash({
   url,
   token,
   ...init
-}: { url: string; token: string } & RequestInit) {
+}: {
+  url: string;token: string
+} & RequestInit) {
   const res = await fetch(url, {
     ...init,
     headers: {
@@ -16,9 +18,9 @@ async function upstash({
     },
   })
 
-  const data = res.headers.get('Content-Type')!.includes('application/json')
-    ? await res.json()
-    : await res.text()
+  const data = res.headers.get('Content-Type') !.includes('application/json') ?
+    await res.json() :
+    await res.text()
 
   if (res.ok) {
     return data
@@ -33,7 +35,9 @@ async function upstash({
 
 export async function upstashRest(
   args: any[],
-  options?: { pipeline: boolean }
+  options ? : {
+    pipeline: boolean
+  }
 ) {
   const domain = process.env.UPSTASH_REST_API_DOMAIN
   const token = process.env.UPSTASH_REST_API_TOKEN
