@@ -1,4 +1,7 @@
-import { NextRequest, NextResponse } from 'next/server'
+import {
+  NextRequest,
+  NextResponse
+} from 'next/server'
 import {
   BOTD_DEFAULT_URL,
   BOTD_EDGE_PATH,
@@ -26,12 +29,16 @@ const defaultOptions = {
 
 export async function botdEdge(
   req: NextRequest,
-  options: { useRequestId?: boolean } = defaultOptions
-): Promise<NextResponse | undefined> {
+  options: {
+    useRequestId ? : boolean
+  } = defaultOptions
+): Promise < NextResponse | undefined > {
   const token = getToken()
   if (!token) return
 
-  const { pathname } = req.nextUrl
+  const {
+    pathname
+  } = req.nextUrl
 
   // Light bot detection is not required for static files or for favicon.ico
   if (STATIC_REGEX_EXCLUSION.test(pathname) && !isFavicon(req)) return
@@ -40,8 +47,7 @@ export async function botdEdge(
   const body = {
     headers: getHeadersDict(req.headers),
     path: pathname,
-    previous_request_id:
-      (options.useRequestId && req.cookies.get(COOKIE_NAME)) || '',
+    previous_request_id: (options.useRequestId && req.cookies.get(COOKIE_NAME)) || '',
     timestamp: Date.now(),
   }
   // `?header` is used to always get results in headers
@@ -110,10 +116,13 @@ export async function botdEdge(
         botProb > 0 ||
         searchBotProb > 0 ||
         vmProb > 0 ||
-        browserSpoofingProb > 0
-          ? 403
-          : 200
-      let res = new NextResponse(null, { status, headers })
+        browserSpoofingProb > 0 ?
+        403 :
+        200
+      let res = new NextResponse(null, {
+        status,
+        headers
+      })
 
       if (status === 200) {
         // Let Next.js continue
@@ -138,7 +147,9 @@ export async function botd(req: NextRequest) {
   const token = getToken()
   if (!token) return
 
-  const { pathname } = req.nextUrl
+  const {
+    pathname
+  } = req.nextUrl
 
   if (STATIC_REGEX_EXCLUSION.test(pathname)) {
     if (isFavicon(req)) return botdEdge(req)
@@ -219,7 +230,7 @@ function getToken() {
 }
 
 function getHeadersDict(headers: Headers) {
-  const headersDict: Record<string, string[]> = {}
+  const headersDict: Record < string, string[] > = {}
   for (const [key, value] of headers) {
     headersDict[key] = [value]
   }
