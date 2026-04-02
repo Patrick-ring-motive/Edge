@@ -1,5 +1,10 @@
-import type { Locator, Page } from '@playwright/test'
-import { tid } from 'main-site/lib/data-testid'
+import type {
+  Locator,
+  Page
+} from '@playwright/test'
+import {
+  tid
+} from 'main-site/lib/data-testid'
 
 export const createUtils = (page: Page) => ({
   /**
@@ -18,4 +23,4 @@ export const createUtils = (page: Page) => ({
   isMobileViewport: () => (page.viewportSize()?.width ?? 0) <= 600,
 })
 
-export type Utils = ReturnType<typeof createUtils>
+export type Utils = ReturnType < typeof createUtils >
