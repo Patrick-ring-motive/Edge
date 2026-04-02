@@ -17,7 +17,7 @@ const contentStack = {
     contentType = '',
     entryId = '',
     locale = 'en-US'
-  ): Promise<Entry | null> {
+  ): Promise < Entry | null > {
     // https://www.contentstack.com/docs/developers/apis/content-delivery-api/#get-a-single-entry
     try {
       const cmsEnv = process.env.CONTENTSTACK_ENV ?? process.env.NODE_ENV
@@ -30,7 +30,9 @@ const contentStack = {
         },
       })
 
-      const { entry } = await res.json()
+      const {
+        entry
+      } = await res.json()
       return entry
     } catch (err) {
       console.log('An Error occurred while trying to fetch an Entry: ', err)
