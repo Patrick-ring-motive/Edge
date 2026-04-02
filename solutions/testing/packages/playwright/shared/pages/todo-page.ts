@@ -1,5 +1,9 @@
-import { type Locator } from '@playwright/test'
-import { BasePage } from 'shared/utils/base-page'
+import {
+  type Locator
+} from '@playwright/test'
+import {
+  BasePage
+} from 'shared/utils/base-page'
 
 export class TodoPage extends BasePage {
   path() {
