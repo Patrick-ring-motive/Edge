@@ -3,9 +3,7 @@
 }
 
 .link {
-  @apply inline-flex items-center leading-6
-  font-medium transition ease-in-out duration-75
-  cursor-pointer text-accents-6 text-black underline text-sm;
+  @apply inline-flex items-center leading-6 font-medium transition ease-in-out duration-75 cursor-pointer text-accents-6 text-black underline text-sm;
 }
 
 .link:hover {
@@ -26,6 +24,5 @@
 }
 
 .mobileNav {
-  @apply border-t border-b bg-gray-200 grid grid-cols-4
-  text-center uppercase text-sm tracking-widest md:hidden;
+  @apply border-t border-b bg-gray-200 grid grid-cols-4 text-center uppercase text-sm tracking-widest md:hidden;
 }
