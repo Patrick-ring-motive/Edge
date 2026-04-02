@@ -1,7 +1,11 @@
 import prisma from '../lib/prisma'
-import { type Pokemon } from '@prisma/client'
+import {
+  type Pokemon
+} from '@prisma/client'
 import fs from 'fs'
-import { openai } from '../lib/openai'
+import {
+  openai
+} from '../lib/openai'
 import path from 'path'
 import pokemon from './pokemon-with-embeddings.json'
 
@@ -34,7 +38,10 @@ async function main() {
     // following line and comment out the line after it.
     // const embedding = await generateEmbedding(p.name);
     // await new Promise((r) => setTimeout(r, 500)); // Wait 500ms between requests;
-    const { embedding, ...p } = record
+    const {
+      embedding,
+      ...p
+    } = record
 
     // Create the pokemon in the database
     const pokemon = await prisma.pokemon.create({
@@ -75,6 +82,8 @@ async function generateEmbedding(_input: string) {
     input,
   })
   console.log(embeddingData)
-  const [{ embedding }] = (embeddingData as any).data
+  const [{
+    embedding
+  }] = (embeddingData as any).data
   return embedding
 }
