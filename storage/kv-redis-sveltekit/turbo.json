@@ -2,7 +2,9 @@
   "$schema": "https://turbo.build/schema.json",
   "pipeline": {
     "build": {
-      "outputs": [".svelte-kit/**"]
+      "outputs": [
+        ".svelte-kit/**"
+      ]
     },
     "lint": {}
   }
