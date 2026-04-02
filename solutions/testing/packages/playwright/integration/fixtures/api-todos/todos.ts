@@ -1,15 +1,27 @@
-import { randomUUID } from 'crypto'
+import {
+  randomUUID
+} from 'crypto'
 
 type Todo = {
   id: string
   title: string
-  done?: boolean
+  done ? : boolean
 }
 
-const todos: Todo[] = [
-  { id: randomUUID(), title: 'Make a cup of tea' },
-  { id: randomUUID(), title: 'Go out and exercise' },
-  { id: randomUUID(), title: 'Continue writing my next blog post' },
+const todos: Todo[] = [{
+    id: randomUUID(),
+    title: 'Make a cup of tea'
+  },
+  {
+    id: randomUUID(),
+    title: 'Go out and exercise'
+  },
+  {
+    id: randomUUID(),
+    title: 'Continue writing my next blog post'
+  },
 ]
 
-export const todosBody = { todos }
+export const todosBody = {
+  todos
+}
