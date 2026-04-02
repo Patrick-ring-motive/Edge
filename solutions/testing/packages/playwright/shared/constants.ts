@@ -13,6 +13,6 @@ if (TEST_TYPE && !['e2e', 'integration'].includes(TEST_TYPE)) {
 }
 
 export const BASE_URL =
-  typeof process.env.BASE_URL === 'string'
-    ? process.env.BASE_URL
-    : 'http://localhost:3000'
+  typeof process.env.BASE_URL === 'string' ?
+  process.env.BASE_URL :
+  'http://localhost:3000'
