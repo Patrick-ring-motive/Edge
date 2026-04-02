@@ -1,5 +1,10 @@
-import { todosBody } from 'integration/fixtures/api-todos/todos'
-import { type CreateMockFn, HTTPMethod } from 'integration/utils/types'
+import {
+  todosBody
+} from 'integration/fixtures/api-todos/todos'
+import {
+  type CreateMockFn,
+  HTTPMethod
+} from 'integration/utils/types'
 
 export const createTodosMocks = (createMockFn: CreateMockFn) => ({
   todo: {
