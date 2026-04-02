@@ -11,14 +11,11 @@
 }
 
 .dropdownMenu {
-  @apply fixed right-0 top-10 mt-2 origin-top-right
-  outline-none bg-white z-40 w-full h-full;
+  @apply fixed right-0 top-10 mt-2 origin-top-right outline-none bg-white z-40 w-full h-full;
 }
 
 .item {
-  @apply flex cursor-pointer px-6 py-3 flex transition
-  ease-in-out duration-150 text-black leading-6 font-medium 
-  items-center;
+  @apply flex cursor-pointer px-6 py-3 flex transition ease-in-out duration-150 text-black leading-6 font-medium items-center;
   text-transform: capitalize;
 }
 
