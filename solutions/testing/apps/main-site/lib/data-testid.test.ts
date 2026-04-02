@@ -1,4 +1,6 @@
-import { tid } from './data-testid'
+import {
+  tid
+} from './data-testid'
 
 describe('tid', () => {
   test('should return an empty string if there are no parameters', () => {
