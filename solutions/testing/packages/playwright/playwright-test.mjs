@@ -2,41 +2,42 @@ import spawn from 'cross-spawn'
 import arg from 'arg'
 import chokidar from 'chokidar'
 
-const args = arg(
-  {
-    // Types
-    '--help': Boolean,
-    '--integration': Boolean,
-    '--e2e': Boolean,
-    '--pause-on-failure': [Boolean],
-    '--watch': Boolean,
-    // '--debug': Boolean,
-    '--chromium': Boolean,
+const args = arg({
+  // Types
+  '--help': Boolean,
+  '--integration': Boolean,
+  '--e2e': Boolean,
+  '--pause-on-failure': [Boolean],
+  '--watch': Boolean,
+  // '--debug': Boolean,
+  '--chromium': Boolean,
 
-    // Aliases
-    '-h': '--help',
-    '-i': '--integration',
-    '-e': '--e2e',
-    '-p': '--pause-on-failure',
-    '-w': '--watch',
-    '-c': '--chromium',
-    // '-d': '--debug',
-  },
-  { permissive: true }
-)
+  // Aliases
+  '-h': '--help',
+  '-i': '--integration',
+  '-e': '--e2e',
+  '-p': '--pause-on-failure',
+  '-w': '--watch',
+  '-c': '--chromium',
+  // '-d': '--debug',
+}, {
+  permissive: true
+})
 
-const testType = args['--integration']
-  ? 'integration'
-  : args['--e2e']
-  ? 'e2e'
-  : null
+const testType = args['--integration'] ?
+  'integration' :
+  args['--e2e'] ?
+  'e2e' :
+  null
 
 const pauseOnFailure = args['--pause-on-failure']
 
 const initPlaywright = (options, ...paths) => {
   const argsToForward = args._
   const testArgs = ['test']
-  const env = { ...process.env }
+  const env = {
+    ...process.env
+  }
 
   if (testType) env.TEST_TYPE = testType
 
@@ -60,8 +61,10 @@ const initPlaywright = (options, ...paths) => {
 
   const instance = spawn(
     'playwright',
-    [...testArgs, ...argsToForward, ...paths],
-    { stdio: 'inherit', env }
+    [...testArgs, ...argsToForward, ...paths], {
+      stdio: 'inherit',
+      env
+    }
   )
 
   if (options?.verbose !== false) {
@@ -95,7 +98,10 @@ const initPlaywright = (options, ...paths) => {
     }
   }
 
-  return { events, kill }
+  return {
+    events,
+    kill
+  }
 }
 
 const watch = () =>
@@ -103,11 +109,11 @@ const watch = () =>
     const integrationPath = 'playwright/integration/tests/**/*.spec.ts'
     const e2ePath = 'playwright/e2e/tests/**/*.spec.ts'
     const paths =
-      testType === 'integration'
-        ? integrationPath
-        : testType === 'e2e'
-        ? e2ePath
-        : [integrationPath, e2ePath]
+      testType === 'integration' ?
+      integrationPath :
+      testType === 'e2e' ?
+      e2ePath :
+      [integrationPath, e2ePath]
 
     const watcher = chokidar.watch(paths, {
       ignoreInitial: true,
@@ -120,7 +126,9 @@ const watch = () =>
 
     function handlePath(path) {
       console.log('>', path)
-      initPlaywright({ verbose: false }, path).events.catch((error) => {
+      initPlaywright({
+        verbose: false
+      }, path).events.catch((error) => {
         console.error('An error happened using Playwright for:', path)
         console.error(error)
       })
@@ -138,7 +146,10 @@ if (args['--watch']) {
     process.exit(1)
   })
 } else {
-  const { events, kill } = initPlaywright()
+  const {
+    events,
+    kill
+  } = initPlaywright()
 
   process.on('exit', kill)
   process.on('SIGINT', kill)
