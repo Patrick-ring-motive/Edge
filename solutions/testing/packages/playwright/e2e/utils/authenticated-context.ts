@@ -1,17 +1,28 @@
-import { PlaywrightTestOptions, Fixtures, request } from '@playwright/test'
-import { randomUUID } from 'crypto'
+import {
+  PlaywrightTestOptions,
+  Fixtures,
+  request
+} from '@playwright/test'
+import {
+  randomUUID
+} from 'crypto'
 import generateUsername from 'shared/utils/generate-username'
-import type { StorageState } from 'shared/utils/storage-state'
+import type {
+  StorageState
+} from 'shared/utils/storage-state'
 
 async function createAuthenticatedStorage(
   baseURL: string
-): Promise<StorageState> {
+): Promise < StorageState > {
   const requestContext = await request.newContext()
   const token = 'SECRET_TOKEN'
 
   // Create a new user
   const response = await requestContext.post(`${baseURL}/api/signup`, {
-    data: { username: generateUsername(), password: randomUUID() },
+    data: {
+      username: generateUsername(),
+      password: randomUUID()
+    },
     headers: {
       // In general, teting user accounts are cleaned from the production DB
       // and creating them requires less verifications, but the process should
@@ -29,7 +40,9 @@ async function createAuthenticatedStorage(
       .json()
       .then((json) => {
         // The API returns errors in the format `{ error: { message: string } }`.
-        const { message } = json.error
+        const {
+          message
+        } = json.error
         // if the body doesn't match our format, use the status text.
         return (message as string) || response.statusText()
       })
@@ -52,8 +65,10 @@ async function createAuthenticatedStorage(
  * Note that one user is created per test file, per browser. Within the test
  * file, the same user (context) will be shared between tests.
  */
-export const authenticatedContext: Fixtures<{}, {}, PlaywrightTestOptions> = {
-  storageState: async ({ baseURL }, use) => {
+export const authenticatedContext: Fixtures < {}, {}, PlaywrightTestOptions > = {
+  storageState: async ({
+    baseURL
+  }, use) => {
     use(await createAuthenticatedStorage(baseURL!))
   },
 }
