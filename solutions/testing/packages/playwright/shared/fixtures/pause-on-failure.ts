@@ -4,9 +4,9 @@ import {
   TestType,
 } from '@playwright/test'
 
-type AfterEach = Parameters<
-  TestType<PlaywrightTestArgs, PlaywrightWorkerOptions>['afterEach']
->[0]
+type AfterEach = Parameters <
+  TestType < PlaywrightTestArgs, PlaywrightWorkerOptions > ['afterEach'] >
+  [0]
 
 /**
  * Pauses testing execution on failure. Works for both integration and E2E tests.
@@ -15,7 +15,10 @@ type AfterEach = Parameters<
  * @param testInfo
  * @returns A fixture that will log the error and pause Playwright after an error is thrown.
  */
-const pauseOnFailure: AfterEach = async ({ page, headless }, testInfo) => {
+const pauseOnFailure: AfterEach = async ({
+  page,
+  headless
+}, testInfo) => {
   if (headless || testInfo.status === testInfo.expectedStatus) return
 
   process.stderr.write(
