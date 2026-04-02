@@ -5,13 +5,19 @@ import {
   timestamp,
   uniqueIndex,
 } from 'drizzle-orm/pg-core'
-import { InferSelectModel, InferInsertModel } from 'drizzle-orm'
-import { sql } from '@vercel/postgres'
-import { drizzle } from 'drizzle-orm/vercel-postgres'
+import {
+  InferSelectModel,
+  InferInsertModel
+} from 'drizzle-orm'
+import {
+  sql
+} from '@vercel/postgres'
+import {
+  drizzle
+} from 'drizzle-orm/vercel-postgres'
 
 export const UsersTable = pgTable(
-  'users',
-  {
+  'users', {
     id: serial('id').primaryKey(),
     name: text('name').notNull(),
     email: text('email').notNull(),
@@ -25,8 +31,8 @@ export const UsersTable = pgTable(
   }
 )
 
-export type User = InferSelectModel<typeof UsersTable>
-export type NewUser = InferInsertModel<typeof UsersTable>
+export type User = InferSelectModel < typeof UsersTable >
+  export type NewUser = InferInsertModel < typeof UsersTable >
 
-// Connect to Vercel Postgres
-export const db = drizzle(sql)
+  // Connect to Vercel Postgres
+  export const db = drizzle(sql)
