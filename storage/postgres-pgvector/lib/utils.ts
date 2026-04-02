@@ -1,7 +1,16 @@
-import { clsx, type ClassValue } from 'clsx'
-import { twMerge } from 'tailwind-merge'
-import { Ratelimit } from '@upstash/ratelimit'
-import { kv } from '@vercel/kv'
+import {
+  clsx,
+  type ClassValue
+} from 'clsx'
+import {
+  twMerge
+} from 'tailwind-merge'
+import {
+  Ratelimit
+} from '@upstash/ratelimit'
+import {
+  kv
+} from '@vercel/kv'
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
