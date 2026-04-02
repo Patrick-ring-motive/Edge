@@ -7,9 +7,9 @@
 }
 
 .item {
-  @apply mr-6 cursor-pointer relative transition ease-in-out
-  duration-100 flex items-center outline-none text-black;
+  @apply mr-6 cursor-pointer relative transition ease-in-out duration-100 flex items-center outline-none text-black;
 }
+
 .item:hover {
   @apply text-accents-6 transition scale-110 duration-100;
 }
@@ -24,9 +24,7 @@
 }
 
 .bagCount {
-  @apply border border-accents-1 bg-black text-white
-  h-4 w-4 absolute rounded-full right-3 top-3 flex
-  items-center justify-center font-bold text-xs;
+  @apply border border-accents-1 bg-black text-white h-4 w-4 absolute rounded-full right-3 top-3 flex items-center justify-center font-bold text-xs;
 }
 
 .avatarButton {
