@@ -1,2 +1,5 @@
-export { default } from './quote'
+export {
+  default
+}
+from './quote'
 export * from './quote'
