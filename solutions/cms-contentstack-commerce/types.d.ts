@@ -1,7 +1,8 @@
 interface Entry {
   title: string
   header: HeaderEntity
-  seo: Record<string, string>
+  seo: Record < string,
+  string >
   modular_blocks: UIComponentEntity[]
   locale: string
 }
@@ -20,5 +21,5 @@ interface UIComponentEntity {
 interface UIComponentData {
   component_variant: string
   component_type: UIComponentTypes
-  grid?: GridEntity
+  grid ? : GridEntity
 }
