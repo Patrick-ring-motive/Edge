@@ -205,8 +205,7 @@ export default function Layout({
         className = "sm:hidden" /
         >
         <
-        /a> < /
-        >
+        /a> < / >
       ) : ( <
         Link href = "/"
         className = "flex justify-center items-center" >
@@ -235,7 +234,7 @@ export default function Layout({
       )
     } <
     /div> < /
-    div >
+  div >
 
     <
     div className = "mt-20" > {
