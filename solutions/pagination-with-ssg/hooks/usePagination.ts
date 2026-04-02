@@ -1,7 +1,11 @@
-import { dotts } from '../components/Pagination'
+import {
+  dotts
+} from '../components/Pagination'
 
 const getPages = (length: number, inc: number = 1) =>
-  Array.from({ length }, (_, i) => i + inc)
+  Array.from({
+    length
+  }, (_, i) => i + inc)
 
 export default function usePagination(
   totalItems: number,
