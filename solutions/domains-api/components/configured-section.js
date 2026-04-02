@@ -188,7 +188,7 @@ const ConfiguredSection = ({
   }
   Configuration <
     /p> < /
-    div >
+  div >
 
     {
       !domainInfo.configured && ( <
@@ -261,8 +261,7 @@ const ConfiguredSection = ({
         div > <
         /div> < /
         div > <
-        /div> < /
-        >
+        /div> < / >
       )
     } <
     />
