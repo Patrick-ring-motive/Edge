@@ -2,11 +2,11 @@
   @apply text-center;
 }
 
-.description > * {
+.description>* {
   @apply text-center;
 }
 
-.description > img {
+.description>img {
   margin: 0 auto;
   @apply my-1;
 }
