@@ -2,7 +2,9 @@
 export default defineNuxtConfig({
   nitro: {
     storage: {
-      data: { driver: 'vercelKV' },
+      data: {
+        driver: 'vercelKV'
+      },
     },
   },
   css: ['~/assets/css/main.css'],
