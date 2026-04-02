@@ -1,17 +1,17 @@
-import type { BrowserContextOptions } from '@playwright/test'
+import type {
+  BrowserContextOptions
+} from '@playwright/test'
 import generateUsername from './generate-username'
 
-export type StorageState = Exclude<
+export type StorageState = Exclude <
   BrowserContextOptions['storageState'],
-  string | undefined
->
+  string | undefined >
 
-export function getAuthState(baseURL: string): StorageState {
-  const url = new URL(baseURL)
+  export function getAuthState(baseURL: string): StorageState {
+    const url = new URL(baseURL)
 
-  return {
-    cookies: [
-      {
+    return {
+      cookies: [{
         httpOnly: true,
         name: 'user',
         value: generateUsername(),
@@ -20,8 +20,7 @@ export function getAuthState(baseURL: string): StorageState {
         path: '/',
         sameSite: 'Lax',
         secure: baseURL.startsWith('https'),
-      },
-    ],
-    origins: [],
+      }, ],
+      origins: [],
+    }
   }
-}
