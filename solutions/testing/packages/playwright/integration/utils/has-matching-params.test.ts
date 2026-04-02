@@ -1,4 +1,6 @@
-import { hasMatchingParams } from './has-matching-params'
+import {
+  hasMatchingParams
+} from './has-matching-params'
 
 describe('hasMatchingParams', () => {
   test('should return true if there are no parameters', () => {
@@ -13,10 +15,15 @@ describe('hasMatchingParams', () => {
       extra: 'param',
     })
     expect(
-      hasMatchingParams(
-        {
-          team: { value: 'acme', optional: false },
-          query: { value: 'hello', optional: false },
+      hasMatchingParams({
+          team: {
+            value: 'acme',
+            optional: false
+          },
+          query: {
+            value: 'hello',
+            optional: false
+          },
         },
         requestParams
       )
@@ -28,10 +35,15 @@ describe('hasMatchingParams', () => {
       team: 'acme',
     })
     expect(
-      hasMatchingParams(
-        {
-          team: { value: 'acme', optional: false },
-          query: { value: 'hello', optional: true },
+      hasMatchingParams({
+          team: {
+            value: 'acme',
+            optional: false
+          },
+          query: {
+            value: 'hello',
+            optional: true
+          },
         },
         requestParams
       )
@@ -44,10 +56,15 @@ describe('hasMatchingParams', () => {
       query: 'hello',
     })
     expect(
-      hasMatchingParams(
-        {
-          team: { value: 'acme', optional: false },
-          query: { value: 'hello', optional: true },
+      hasMatchingParams({
+          team: {
+            value: 'acme',
+            optional: false
+          },
+          query: {
+            value: 'hello',
+            optional: true
+          },
         },
         requestParams
       )
@@ -60,10 +77,15 @@ describe('hasMatchingParams', () => {
       query: 'hello',
     })
     expect(
-      hasMatchingParams(
-        {
-          team: { value: 'acme', optional: false },
-          query: { value: 'hello', optional: false },
+      hasMatchingParams({
+          team: {
+            value: 'acme',
+            optional: false
+          },
+          query: {
+            value: 'hello',
+            optional: false
+          },
         },
         requestParams
       )
@@ -76,10 +98,15 @@ describe('hasMatchingParams', () => {
       query: 'hello0',
     })
     expect(
-      hasMatchingParams(
-        {
-          team: { value: 'acme', optional: false },
-          query: { value: 'hello', optional: false },
+      hasMatchingParams({
+          team: {
+            value: 'acme',
+            optional: false
+          },
+          query: {
+            value: 'hello',
+            optional: false
+          },
         },
         requestParams
       )
@@ -92,10 +119,15 @@ describe('hasMatchingParams', () => {
       query: 'hello',
     })
     expect(
-      hasMatchingParams(
-        {
-          team: { value: /(?:acme|hello)/, optional: false },
-          query: { value: /^hel.+/, optional: false },
+      hasMatchingParams({
+          team: {
+            value: /(?:acme|hello)/,
+            optional: false
+          },
+          query: {
+            value: /^hel.+/,
+            optional: false
+          },
         },
         requestParams
       )
@@ -108,10 +140,15 @@ describe('hasMatchingParams', () => {
       query: 'h3llo',
     })
     expect(
-      hasMatchingParams(
-        {
-          team: { value: /(?:hello)/, optional: false },
-          query: { value: /^hel.+/, optional: false },
+      hasMatchingParams({
+          team: {
+            value: /(?:hello)/,
+            optional: false
+          },
+          query: {
+            value: /^hel.+/,
+            optional: false
+          },
         },
         requestParams
       )
@@ -123,9 +160,11 @@ describe('hasMatchingParams', () => {
       team: 'acme',
     })
     expect(
-      hasMatchingParams(
-        {
-          team: { value: '*', optional: false },
+      hasMatchingParams({
+          team: {
+            value: '*',
+            optional: false
+          },
         },
         requestParams
       )
