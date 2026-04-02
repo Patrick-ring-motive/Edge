@@ -1,5 +1,10 @@
-import type { VercelRequest, VercelResponse } from '@vercel/node'
-import type { Readable } from 'node:stream'
+import type {
+  VercelRequest,
+  VercelResponse
+} from '@vercel/node'
+import type {
+  Readable
+} from 'node:stream'
 
 export const config = {
   api: {
@@ -15,12 +20,14 @@ async function buffer(readable: Readable) {
   return Buffer.concat(chunks)
 }
 
-export default async function (req: VercelRequest, res: VercelResponse) {
+export default async function(req: VercelRequest, res: VercelResponse) {
   if (req.method === 'POST') {
     const buf = await buffer(req)
     const rawBody = buf.toString('utf8')
 
-    res.json({ rawBody })
+    res.json({
+      rawBody
+    })
   } else {
     res.setHeader('Allow', 'POST')
     res.status(405).end('Method Not Allowed')
