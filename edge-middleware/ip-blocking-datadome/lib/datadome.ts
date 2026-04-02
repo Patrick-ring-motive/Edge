@@ -24,8 +24,7 @@ export default async function datadome(req: NextRequest) {
     ServerName: 'vercel',
     // this should be `x-real-ip` but it doesn't currently work on Edge Middleware
     IP: req.headers.get('x-forwarded-for') ?
-      req.headers.get('x-forwarded-for') !.split(',')[0] :
-      '127.0.0.1',
+      req.headers.get('x-forwarded-for') !.split(',')[0] : '127.0.0.1',
     // localhost won't likely be blocked by Datadome unless you use your real IP
     // IP: 'YOUR IP',
     Port: 0,
