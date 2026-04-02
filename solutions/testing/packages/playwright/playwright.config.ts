@@ -1,16 +1,33 @@
-import { join, resolve } from 'path'
+import {
+  join,
+  resolve
+} from 'path'
 import dotenv from 'dotenv'
-import { ReporterDescription, defineConfig } from '@playwright/test'
-import { devices } from '@playwright/test'
-import { BASE_URL, IS_CI, OPEN_DEVTOOLS, TEST_TYPE } from 'shared/constants'
-import { ApplitoolsConfig } from 'shared/applitools'
+import {
+  ReporterDescription,
+  defineConfig
+} from '@playwright/test'
+import {
+  devices
+} from '@playwright/test'
+import {
+  BASE_URL,
+  IS_CI,
+  OPEN_DEVTOOLS,
+  TEST_TYPE
+} from 'shared/constants'
+import {
+  ApplitoolsConfig
+} from 'shared/applitools'
 
-dotenv.config({ path: resolve(__dirname, '.env.local') })
+dotenv.config({
+  path: resolve(__dirname, '.env.local')
+})
 
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
-const config = defineConfig<ApplitoolsConfig>({
+const config = defineConfig < ApplitoolsConfig > ({
   globalSetup: join(__dirname, 'shared', 'global-setup.ts'),
   testDir: TEST_TYPE ? join(__dirname, TEST_TYPE, 'tests') : '.',
   testMatch: '*.spec.ts',
@@ -35,15 +52,15 @@ const config = defineConfig<ApplitoolsConfig>({
   /* Reporters to use. See https://playwright.dev/docs/test-reporters */
   reporter: [
     IS_CI ? ['list'] : ['line'],
-    IS_CI
-      ? [
-          'junit',
-          {
-            outputFile: join(__dirname, 'test-results/output/junit.xml'),
-            embedAnnotationsAsProperties: true,
-          },
-        ]
-      : null,
+    IS_CI ?
+    [
+      'junit',
+      {
+        outputFile: join(__dirname, 'test-results/output/junit.xml'),
+        embedAnnotationsAsProperties: true,
+      },
+    ] :
+    null,
     [
       'html',
       {
@@ -69,8 +86,7 @@ const config = defineConfig<ApplitoolsConfig>({
     trace: 'retain-on-failure',
   },
   /* Configure projects for major browsers */
-  projects: [
-    {
+  projects: [{
       name: 'chromium',
       use: {
         ...devices['Desktop Chrome'],
