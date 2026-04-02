@@ -77,8 +77,7 @@ export default function SiteIndex() {
         LoadingDots / >
       ) : ( <
         >
-        New Post < span className = "ml-2" > ＋ < /span> < /
-        >
+        New Post < span className = "ml-2" > ＋ < /span> < / >
       )
     } <
     /button> < /
