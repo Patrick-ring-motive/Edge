@@ -1,4 +1,6 @@
-import { test as base } from '@playwright/test'
+import {
+  test as base
+} from '@playwright/test'
 import {
   BatchInfo,
   Configuration,
@@ -18,15 +20,15 @@ export type ApplitoolsConfig = {
 }
 
 export type ApplitoolsExtensions = ApplitoolsConfig & {
-  applitools: Partial<ApplitoolsOptions>
-  eyes: Eyes
+  applitools: Partial < ApplitoolsOptions >
+    eyes: Eyes
 }
 
 export type ApplitoolsOptions = {
   appName: string
-  viewportSize?: RectangleSizePlain
-  batchInfo?: BatchInfoPlain
-  config?: (config: Configuration) => Configuration
+  viewportSize ? : RectangleSizePlain
+  batchInfo ? : BatchInfoPlain
+  config ? : (config: Configuration) => Configuration
 }
 
 export const applitoolsTest = (options: ApplitoolsOptions) => {
@@ -35,19 +37,32 @@ export const applitoolsTest = (options: ApplitoolsOptions) => {
   let config: Configuration
   let runner: VisualGridRunner
 
-  const test = base.extend<ApplitoolsExtensions>({
+  const test = base.extend < ApplitoolsExtensions > ({
     // If true, Applitools will be enabled for the test.
-    applitoolsEyes: [false, { option: true }],
-    applitools: [options, { option: true }],
-    eyes: async ({ applitoolsEyes, applitools, page }, use, testInfo) => {
+    applitoolsEyes: [false, {
+      option: true
+    }],
+    applitools: [options, {
+      option: true
+    }],
+    eyes: async ({
+      applitoolsEyes,
+      applitools,
+      page
+    }, use, testInfo) => {
       if (!process.env.APPLITOOLS_API_KEY || !applitoolsEyes) {
         // Mock the Applitools API to prevent tests from failing.
-        return use({ check: noop } as Eyes)
+        return use({
+            check: noop
+          }
+          as Eyes)
       }
 
       const eyes = new Eyes(runner, config)
 
-      const { titlePath } = testInfo
+      const {
+        titlePath
+      } = testInfo
       // If `titlePath` looks like: ['todo.spec.ts', 'Todo Page', 'should do something']
       // the name will be set to "Todo Page - should do something". If the length is 2 it
       // will be "todo.spec.ts - should do something" instead.
@@ -74,7 +89,10 @@ export const applitoolsTest = (options: ApplitoolsOptions) => {
         // Eyes will resize the web browser to match the requested viewport size.
         // This parameter is optional but encouraged in order to produce consistent results.
         applitools.viewportSize ||
-          options.viewportSize || { width: 1024, height: 768 }
+        options.viewportSize || {
+          width: 1024,
+          height: 768
+        }
       )
 
       await use(eyes)
@@ -83,13 +101,18 @@ export const applitoolsTest = (options: ApplitoolsOptions) => {
 
   if (!process.env.APPLITOOLS_API_KEY) return test
 
-  test.beforeAll(({ applitoolsEyes, applitools }, testInfo) => {
+  test.beforeAll(({
+    applitoolsEyes,
+    applitools
+  }, testInfo) => {
     if (!applitoolsEyes) return
 
     // Create the runner for the Ultrafast Grid.
     // Concurrency refers to the number of visual checkpoints Applitools will perform in parallel.
     // Warning: If you have a free account, then concurrency will be limited to 1.
-    runner = new VisualGridRunner({ testConcurrency: 5 })
+    runner = new VisualGridRunner({
+      testConcurrency: 5
+    })
 
     // Create a new batch for tests.
     // A batch is the collection of visual checkpoints for a test suite.
@@ -109,7 +132,10 @@ export const applitoolsTest = (options: ApplitoolsOptions) => {
     config = options.config?.(config) || config
   })
 
-  test.afterEach(async ({ applitoolsEyes, eyes }) => {
+  test.afterEach(async ({
+    applitoolsEyes,
+    eyes
+  }) => {
     if (!applitoolsEyes) return
 
     // Close Eyes to tell the server it should display the results.
@@ -123,7 +149,9 @@ export const applitoolsTest = (options: ApplitoolsOptions) => {
     // If any checkpoints are unresolved or failed, then `eyes.close()` will make the Playwright test fail.
   })
 
-  test.afterAll(async ({ applitoolsEyes }) => {
+  test.afterAll(async ({
+    applitoolsEyes
+  }) => {
     if (!applitoolsEyes) return
 
     // Close the batch and force Playwright to wait synchronously for all visual checkpoints to complete.
