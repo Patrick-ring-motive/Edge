@@ -1,4 +1,7 @@
-import { createPool, sql } from '@vercel/postgres'
+import {
+  createPool,
+  sql
+} from '@vercel/postgres'
 
 async function seed() {
   const createTable = await sql`
@@ -41,7 +44,9 @@ export default defineEventHandler(async () => {
   const startTime = Date.now()
   const db = createPool()
   try {
-    const { rows: users } = await db.query('SELECT * FROM users')
+    const {
+      rows: users
+    } = await db.query('SELECT * FROM users')
     const duration = Date.now() - startTime
     return {
       users: users,
@@ -55,7 +60,9 @@ export default defineEventHandler(async () => {
       )
       // Table is not created yet
       await seed()
-      const { rows: users } = await db.query('SELECT * FROM users')
+      const {
+        rows: users
+      } = await db.query('SELECT * FROM users')
       const duration = Date.now() - startTime
       return {
         users: users,
