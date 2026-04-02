@@ -1,9 +1,12 @@
-import { promises as fs } from 'fs'
+import {
+  promises as fs
+} from 'fs'
 import path from 'path'
-import { Product } from './types'
+import {
+  Product
+} from './types'
 
-const PRODUCTS: Product[] = [
-  {
+const PRODUCTS: Product[] = [{
     id: 'mug',
     title: 'Vercel Mug',
     description: 'Limited edition',
@@ -25,7 +28,7 @@ const api = {
     return PRODUCTS.find((product) => product.id === id)
   },
   cache: {
-    get: async (id: string): Promise<Product | null | undefined> => {
+    get: async (id: string): Promise < Product | null | undefined > => {
       const data = await fs.readFile(path.join(process.cwd(), 'products.db'))
       const products: Product[] = JSON.parse(data as unknown as string)
 
