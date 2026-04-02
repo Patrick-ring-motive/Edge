@@ -1,9 +1,20 @@
-import { randomUUID } from 'crypto'
-import { test, expect } from 'integration/setup-fixture'
-import { SignupPage } from 'shared/pages/signup-page'
-import { TodoPage } from 'shared/pages/todo-page'
+import {
+  randomUUID
+} from 'crypto'
+import {
+  test,
+  expect
+} from 'integration/setup-fixture'
+import {
+  SignupPage
+} from 'shared/pages/signup-page'
+import {
+  TodoPage
+} from 'shared/pages/todo-page'
 import generateUsername from 'shared/utils/generate-username'
-import { getAuthState } from 'shared/utils/storage-state'
+import {
+  getAuthState
+} from 'shared/utils/storage-state'
 
 test.describe('Signup', () => {
   test('should allow a visitor to signup and redirect to todos page', async ({
@@ -20,9 +31,15 @@ test.describe('Signup', () => {
     const [waitForResponse] = await mockApi.user.signup.post()
     // Add a mock for the todos request that happens after signup redirects to `/`.
     const [waitForTodoResponse] = await mockApi.todos.todo.get({
-      body: { todos: [] },
+      body: {
+        todos: []
+      },
     })
-    const { username, password, submitButton } = signupPage.getSignupForm()
+    const {
+      username,
+      password,
+      submitButton
+    } = signupPage.getSignupForm()
 
     // Fill the username
     await username.click()
@@ -38,7 +55,9 @@ test.describe('Signup', () => {
     await Promise.all([
       waitForResponse(),
       waitForTodoResponse(),
-      page.waitForNavigation({ url: '/' }),
+      page.waitForNavigation({
+        url: '/'
+      }),
       submitButton.click(),
     ])
 
