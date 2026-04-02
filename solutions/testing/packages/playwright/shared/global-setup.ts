@@ -1,4 +1,6 @@
-import { randomUUID } from 'crypto'
+import {
+  randomUUID
+} from 'crypto'
 
 export default async function globalSetup() {
   if (process.env.APPLITOOLS_API_KEY) {
