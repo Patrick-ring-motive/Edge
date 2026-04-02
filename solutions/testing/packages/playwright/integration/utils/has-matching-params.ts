@@ -1,7 +1,9 @@
-import { SearchParamsProperties } from './types'
+import {
+  SearchParamsProperties
+} from './types'
 
 export function hasMatchingParams(
-  mockSearchParams: Record<string, SearchParamsProperties>,
+  mockSearchParams: Record < string, SearchParamsProperties > ,
   requestSearchParams: URLSearchParams
 ): boolean {
   const mockSearchParamKeys = Object.keys(mockSearchParams)
@@ -21,7 +23,10 @@ export function hasMatchingParams(
   }
 
   return Object.entries(mockSearchParams).every(
-    ([key, { value, optional }]) => {
+    ([key, {
+      value,
+      optional
+    }]) => {
       const requestValue = requestSearchParams.get(key)
       // Value is optional, so if there is no request value, it still matches.
       if (optional && !requestValue) return true
