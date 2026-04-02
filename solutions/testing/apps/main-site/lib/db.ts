@@ -1,12 +1,21 @@
-import { randomUUID } from 'crypto'
-import type { NextApiRequest, NextApiResponse } from 'next'
-import { NextRequest } from 'next/server'
-import { serialize } from 'cookie'
+import {
+  randomUUID
+} from 'crypto'
+import type {
+  NextApiRequest,
+  NextApiResponse
+} from 'next'
+import {
+  NextRequest
+} from 'next/server'
+import {
+  serialize
+} from 'cookie'
 
 export type Todo = {
   id: string
   title: string
-  done?: boolean
+  done ? : boolean
 }
 
 /**
@@ -15,27 +24,36 @@ export type Todo = {
  */
 class DB {
   async signup(
-    data: { username: string; password: string },
+    data: {
+      username: string;password: string
+    },
     res: NextApiResponse
   ) {
     res.setHeader(
       'Set-Cookie',
-      serialize('user', data.username, { httpOnly: true, path: '/' })
+      serialize('user', data.username, {
+        httpOnly: true,
+        path: '/'
+      })
     )
     return data
   }
 
   async getUserFromReq(
     req: NextRequest | NextApiRequest
-  ): Promise<{ username: string } | null> {
+  ): Promise < {
+    username: string
+  } | null > {
     const username =
-      typeof req.cookies.get === 'function'
-        ? req.cookies.get('user')?.value
-        : (req.cookies as NextApiRequest['cookies'])['user']
-    return username ? { username } : null
+      typeof req.cookies.get === 'function' ?
+      req.cookies.get('user')?.value :
+      (req.cookies as NextApiRequest['cookies'])['user']
+    return username ? {
+      username
+    } : null
   }
 
-  async getTodos(username: string, req: NextApiRequest): Promise<Todo[]> {
+  async getTodos(username: string, req: NextApiRequest): Promise < Todo[] > {
     const data = req.cookies['todos']
     const dataObj = data ? JSON.parse(data) : {}
 
@@ -46,7 +64,10 @@ class DB {
   async setTodos(username: string, todos: Todo[], res: NextApiResponse) {
     res.setHeader(
       'Set-Cookie',
-      serialize('todos', JSON.stringify({ username, todos }), {
+      serialize('todos', JSON.stringify({
+        username,
+        todos
+      }), {
         httpOnly: true,
         path: '/',
       })
@@ -56,13 +77,18 @@ class DB {
 
   async addTodo(
     username: string,
-    data: { title: string },
+    data: {
+      title: string
+    },
     req: NextApiRequest,
     res: NextApiResponse
   ) {
     const todos = await this.getTodos(username, req)
 
-    todos.push({ ...data, id: randomUUID() })
+    todos.push({
+      ...data,
+      id: randomUUID()
+    })
 
     return this.setTodos(username, todos, res)
   }
@@ -70,7 +96,9 @@ class DB {
   async updateTodo(
     username: string,
     id: string,
-    data: { title?: string; done?: boolean },
+    data: {
+      title ? : string;done ? : boolean
+    },
     req: NextApiRequest,
     res: NextApiResponse
   ) {
@@ -79,7 +107,10 @@ class DB {
 
     if (index === -1) return todos
 
-    todos[index] = { ...todos[index], ...data }
+    todos[index] = {
+      ...todos[index],
+      ...data
+    }
 
     return this.setTodos(username, todos, res)
   }
