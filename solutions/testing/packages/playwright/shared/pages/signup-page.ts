@@ -1,4 +1,6 @@
-import { BasePage } from '../utils/base-page'
+import {
+  BasePage
+} from '../utils/base-page'
 
 export class SignupPage extends BasePage {
   path() {
@@ -14,7 +16,9 @@ export class SignupPage extends BasePage {
     return {
       username: labels.locator('text=Username'),
       password: labels.locator('text=Password'),
-      submitButton: this.page.locator('button', { hasText: 'Signup' }),
+      submitButton: this.page.locator('button', {
+        hasText: 'Signup'
+      }),
     }
   }
 }
