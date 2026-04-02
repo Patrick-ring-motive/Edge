@@ -1,4 +1,7 @@
-import type { NextApiRequest, NextApiResponse } from 'next'
+import type {
+  NextApiRequest,
+  NextApiResponse
+} from 'next'
 import db from '../../lib/db'
 
 /**
@@ -8,14 +11,25 @@ export default async function signup(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const { username, password } = req.body
+  const {
+    username,
+    password
+  } = req.body
 
   if (req.method !== 'POST') {
-    res.status(405).json({ error: { message: 'Method Not Allowed' } })
+    res.status(405).json({
+      error: {
+        message: 'Method Not Allowed'
+      }
+    })
     return
   }
   if (!username || !password) {
-    res.status(400).json({ error: { message: 'Missing username or password' } })
+    res.status(400).json({
+      error: {
+        message: 'Missing username or password'
+      }
+    })
     return
   }
   // Checks for users that are created for E2E testing. For the purposes of this
@@ -25,15 +39,28 @@ export default async function signup(
   if (username.startsWith('tes123-')) {
     const token = req.headers['authorization']
     if (!token) {
-      res.status(403).json({ error: { message: 'Invalid auth.' } })
+      res.status(403).json({
+        error: {
+          message: 'Invalid auth.'
+        }
+      })
       return
     }
   }
 
   try {
-    await db.signup({ username, password }, res)
-    res.status(200).json({ success: true })
+    await db.signup({
+      username,
+      password
+    }, res)
+    res.status(200).json({
+      success: true
+    })
   } catch (err: any) {
-    res.status(500).json({ error: { message: err.message } })
+    res.status(500).json({
+      error: {
+        message: err.message
+      }
+    })
   }
 }
