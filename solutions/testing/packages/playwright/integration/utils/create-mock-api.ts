@@ -1,6 +1,12 @@
-import { Page } from '@playwright/test'
-import { hasMatchingParams } from './has-matching-params'
-import { CreateMockFn } from './types'
+import {
+  Page
+} from '@playwright/test'
+import {
+  hasMatchingParams
+} from './has-matching-params'
+import {
+  CreateMockFn
+} from './types'
 
 /**
  * Returns a function that can be used to create API mocks by
@@ -19,7 +25,13 @@ const createApiMockFn =
     body: defaultBody,
     status: defaultStatus,
   }) =>
-  async ({ pathParams, searchParams, body, status, times } = {}) => {
+  async ({
+    pathParams,
+    searchParams,
+    body,
+    status,
+    times
+  } = {}) => {
     if (path.includes('?')) {
       throw Error(
         'Query parameters must be supplied via `defaultSearchParams` and or `searchParams`.'
@@ -55,8 +67,12 @@ const createApiMockFn =
 
         return [
           key,
-          isRegex || isString ? { value, optional: false } : value,
-        ] as const
+          isRegex || isString ? {
+            value,
+            optional: false
+          } : value,
+        ] as
+        const
       })
     )
 
@@ -87,24 +103,25 @@ const createApiMockFn =
           status: status ?? defaultStatus,
           body: responseBody ? JSON.stringify(responseBody) : undefined,
         })
-      },
-      { times }
+      }, {
+        times
+      }
     )
 
     return [
       (matcher) =>
-        page.waitForResponse((response) => {
-          const url = new URL(response.url())
+      page.waitForResponse((response) => {
+        const url = new URL(response.url())
 
-          if (
-            !pathRegex.test(url.pathname) ||
-            !hasMatchingParams(mockSearchParams, url.searchParams)
-          ) {
-            return false
-          }
+        if (
+          !pathRegex.test(url.pathname) ||
+          !hasMatchingParams(mockSearchParams, url.searchParams)
+        ) {
+          return false
+        }
 
-          return matcher ? matcher(response) : true
-        }),
+        return matcher ? matcher(response) : true
+      }),
       () => responseBody,
     ]
   }
