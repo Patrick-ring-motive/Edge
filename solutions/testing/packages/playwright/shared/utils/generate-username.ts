@@ -1,4 +1,6 @@
-import { randomUUID } from 'crypto'
+import {
+  randomUUID
+} from 'crypto'
 
 /**
  * Generates a random username for testing purposes.
