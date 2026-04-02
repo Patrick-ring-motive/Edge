@@ -1,5 +1,10 @@
-import { kv } from '@vercel/kv'
-import { NextRequest, NextResponse } from 'next/server'
+import {
+  kv
+} from '@vercel/kv'
+import {
+  NextRequest,
+  NextResponse
+} from 'next/server'
 
 const COOKIE_NAME_ID = '__waiting_room_id'
 const COOKIE_NAME_TIME = '__waiting_room_last_update_time'
