@@ -80,8 +80,7 @@ export default function SiteDrafts() {
         LoadingDots / >
       ) : ( <
         >
-        New Draft < span className = "ml-2" > ＋ < /span> < /
-        >
+        New Draft < span className = "ml-2" > ＋ < /span> < / >
       )
     } <
     /button> < /
