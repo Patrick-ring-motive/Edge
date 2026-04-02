@@ -1,12 +1,14 @@
-import { type BrowserContext } from '@playwright/test'
+import {
+  type BrowserContext
+} from '@playwright/test'
 
 /**
  * Register a route handler that blocks requests to external domains. For integration tests only.
  */
 export const registerRouteHandler = async (
   context: BrowserContext,
-  baseURL?: string
-): Promise<void> => {
+  baseURL ? : string
+): Promise < void > => {
   if (!baseURL) {
     throw new Error('`baseURL` is required in order to run integration tests.')
   }
@@ -37,6 +39,8 @@ export const registerRouteHandler = async (
 
     console.log('Route blocked:', resourceType, url, request.method())
 
-    route.fulfill({ status: 404 })
+    route.fulfill({
+      status: 404
+    })
   })
 }
