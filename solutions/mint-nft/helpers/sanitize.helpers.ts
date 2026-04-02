@@ -4,7 +4,7 @@ export const resizeImage = (
   file: File,
   maxWidth: number,
   maxHeight: number
-): Promise<any> => {
+): Promise < any > => {
   return new Promise((resolve, reject) => {
     let image = new Image()
     image.src = URL.createObjectURL(file)
@@ -53,7 +53,10 @@ export const resizeImage = (
  * @returns an object containing predictions about the unsafe categories
  */
 export const isImageSafe = async (file: File) => {
-  const unsafeFallback = { isPornSafe: false, isHentaiSafe: false }
+  const unsafeFallback = {
+    isPornSafe: false,
+    isHentaiSafe: false
+  }
 
   try {
     const img = await resizeImage(file, 300, 300)
