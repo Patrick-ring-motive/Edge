@@ -1,1 +1,4 @@
-export { default } from './I18nWidget'
+export {
+  default
+}
+from './I18nWidget'
