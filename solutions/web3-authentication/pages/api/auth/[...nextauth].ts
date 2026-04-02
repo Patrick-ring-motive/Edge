@@ -1,8 +1,15 @@
-import type { NextApiRequest, NextApiResponse } from 'next'
+import type {
+  NextApiRequest,
+  NextApiResponse
+} from 'next'
 import NextAuth from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
-import { getCsrfToken } from 'next-auth/react'
-import { SiweMessage } from 'siwe'
+import {
+  getCsrfToken
+} from 'next-auth/react'
+import {
+  SiweMessage
+} from 'siwe'
 
 export default async function auth(req: NextApiRequest, res: NextApiResponse) {
   const providers = [
@@ -31,7 +38,9 @@ export default async function auth(req: NextApiRequest, res: NextApiResponse) {
             return null
           }
 
-          if (siwe.nonce !== (await getCsrfToken({ req }))) {
+          if (siwe.nonce !== (await getCsrfToken({
+              req
+            }))) {
             return null
           }
 
@@ -62,7 +71,10 @@ export default async function auth(req: NextApiRequest, res: NextApiResponse) {
     },
     secret: process.env.NEXTAUTH_SECRET,
     callbacks: {
-      async session({ session, token }) {
+      async session({
+        session,
+        token
+      }) {
         session.address = token.sub
         session.user!.name = token.sub
         return session
