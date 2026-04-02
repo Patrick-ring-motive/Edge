@@ -159,7 +159,7 @@ const DomainCard = ({
   }
   Configuration <
     /p> < /
-    div >
+  div >
 
     {
       !valid && ( <
@@ -231,8 +231,7 @@ const DomainCard = ({
         div > <
         /div> < /
         div > <
-        /div> < /
-        >
+        /div> < / >
       )
     } <
     /div>
