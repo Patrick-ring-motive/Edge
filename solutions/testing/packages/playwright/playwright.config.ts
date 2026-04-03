@@ -52,8 +52,7 @@ const config = defineConfig < ApplitoolsConfig > ({
   /* Reporters to use. See https://playwright.dev/docs/test-reporters */
   reporter: [
     IS_CI ? ['list'] : ['line'],
-    IS_CI ?
-    [
+    IS_CI ? [
       'junit',
       {
         outputFile: join(__dirname, 'test-results/output/junit.xml'),
