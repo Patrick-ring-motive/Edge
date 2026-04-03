@@ -112,8 +112,7 @@ const watch = () =>
       testType === 'integration' ?
       integrationPath :
       testType === 'e2e' ?
-      e2ePath :
-      [integrationPath, e2ePath]
+      e2ePath : [integrationPath, e2ePath]
 
     const watcher = chokidar.watch(paths, {
       ignoreInitial: true,
