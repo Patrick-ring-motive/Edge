@@ -46,8 +46,7 @@ class DB {
   } | null > {
     const username =
       typeof req.cookies.get === 'function' ?
-      req.cookies.get('user')?.value :
-      (req.cookies as NextApiRequest['cookies'])['user']
+      req.cookies.get('user')?.value : (req.cookies as NextApiRequest['cookies'])['user']
     return username ? {
       username
     } : null
