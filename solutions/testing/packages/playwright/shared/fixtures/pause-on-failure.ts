@@ -5,8 +5,7 @@ import {
 } from '@playwright/test'
 
 type AfterEach = Parameters <
-  TestType < PlaywrightTestArgs, PlaywrightWorkerOptions > ['afterEach'] >
-  [0]
+  TestType < PlaywrightTestArgs, PlaywrightWorkerOptions > ['afterEach'] > [0]
 
 /**
  * Pauses testing execution on failure. Works for both integration and E2E tests.
